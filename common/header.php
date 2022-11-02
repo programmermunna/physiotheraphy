@@ -3,7 +3,7 @@
 if(!session_start()){ session_start();}
 if(isset($_SESSION['user_id'])){
    $id = $_SESSION['user_id'];
-   $getUser = "SELECT * FROM user_info WHERE id='$id'";
+   $getUser = "SELECT * FROM admin_info WHERE id='$id'";
    $userQuery = mysqli_query($conn,$getUser);
    $user = mysqli_fetch_assoc($userQuery);
 }elseif(isset($_COOKIE['user_id'])){
@@ -14,9 +14,6 @@ if(isset($_SESSION['user_id'])){
 
 if(isset($_SESSION['user_id'])){
   $id = $_SESSION['user_id'];
-}
-if($id<1){
-  header('location:index.php');
 }
 
 $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website WHERE id=1"));
@@ -66,9 +63,18 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website WHERE id
       </div>
 
       <ul class="header_right">
-        <li class="signup_btn show_fsp"><a style="font-size:20px;font-weight:400;" href="profile.php" class="rubik">Trams&Condition</a></li>
-        <li class="signup_btn show_fsp"><a style="font-size:20px;font-weight:400;" href="contact.php" class="rubik">Contract</a></li>
-        <li class="signup_btn show_fsp"><a style="font-size:20px;font-weight:400;" href="appointment.php" class="rubik">Appointment</a></li>
+        <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="profile.php" class="rubik">Trams&Condition</a></li>
+        <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="contact.php" class="rubik">Contract</a></li>
+        <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="appointment.php" class="rubik">Appointment</a></li>
+
+        <?php 
+        if($id<1){ ?>
+        <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="login.php" class="rubik">Login</a></li>
+        <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="sign-in.php" class="rubik">Sing-In</a></li>
+        <?php  }else{?>
+        <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="my-account.php" class="rubik">My Account</a></li>
+        <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="logout.php" class="rubik">Logout</a></li>
+        <?php }?>
       </ul>
     </div>
   </header>

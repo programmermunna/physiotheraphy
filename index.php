@@ -14,7 +14,7 @@
             }else{
               $page = 'index.php';
             }
-            $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM treatment WHERE url ='$page'")); ?> 
+            $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM disease WHERE url ='$page'")); ?> 
               <div class="dc_box">
                 <div class="dc_box_header">                  
                   <div class="dc_box_container" style="padding:0;">
@@ -26,7 +26,7 @@
                 </div>
 
                 </div>
-                  <div style="padding:20px;"><h4><?php echo strtoupper($row['treatment']);?></h4></div>
+                  <div style="padding:20px;"><h4><?php echo strtoupper($row['disease']);?></h4></div>
                   <div style="padding:20px;"><?php echo $row['content'];?></div>                  
               </div>
 

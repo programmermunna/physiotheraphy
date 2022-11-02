@@ -78,8 +78,7 @@ $show = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_info WHERE id
         </li>
 
         <li class="signup_btn show_fsp" data-ref="signup">
-          <!-- <a target="_blank" href="https://support.bddonation.com/home.php" class=""> -->
-          <a target="_blank" href="http://localhost/ticket4/home.php" class="">
+          <a target="_blank" href="../index.php" class="">
             <span>Visit Site</span>
           </a>
         </li>

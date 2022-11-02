@@ -5,27 +5,29 @@ if(isset($_GET['id'])){
 $id = $_GET['id'];
 }
 
-$row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM treatment WHERE id=$id"));
+$row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM disease WHERE id=$id"));
 
-if(isset($_POST['add_treatment'])){
-    $treatment =$_POST['treatment'];
-    $url = strtolower($treatment).".php";
+if(isset($_POST['add_disease'])){
+    $name =$_POST['name'];
+    $title =$_POST['title'];
     $content =$_POST['content'];
     $status =$_POST['status'];
-
+    
+    $url = strtolower($name).".php";
+    
     $file_name = $_FILES['file']['name'];
     $file_tmp = $_FILES['file']['tmp_name'];
     move_uploaded_file($file_tmp,"../upload/$file_name");
 
-    $check = mysqli_query($conn,"SELECT * FROM treatment WHERE content='$content'");
+    $check = mysqli_query($conn,"SELECT * FROM disease WHERE url='$url'");
     if($check<1){
-    $msg = "Alrady Have Treatment. Please Insert Another";
-    header("location:treatment.php?msg=$msg");
+    $msg = "Alrady Have disease. Please Insert Another";
+    header("location:disease.php?msg=$msg");
     }else{
-    $row = mysqli_query($conn,"INSERT INTO treatment(treatment,url,file,status,content) VALUE('$treatment','$url','$file_name','$status','$content')");
+    $row = mysqli_query($conn,"INSERT INTO disease(name,title,url,file,status,content) VALUE('$name','$title','$url','$file_name','$status','$content')");
     if($row){
-    $msg = "Successfully Create a New treatment";
-    header("location:treatment.php?msg=$msg");
+    $msg = "Successfully Create a New disease";
+    header("location:disease.php?msg=$msg");
     }else{
     echo "Something error!";
     }
@@ -48,7 +50,7 @@ if(isset($_POST['add_treatment'])){
                                     <div class="dc_box_container">
                                         <h6>
                                             <span class="icon"><i class="fa fa-user"></i></span>
-                                            <span class="text"> treatment </span>
+                                            <span class="text"> disease </span>
                                         </h6>
                                     </div>
                                 </div>
@@ -60,8 +62,13 @@ if(isset($_POST['add_treatment'])){
                                     </div>
                                     <br />
                                     <div class="input_area">
-                                        <label for="current_p">New treatment</label>
-                                        <input required name="treatment" type="text" class="base_input" />
+                                        <label for="current_p">Disease Name</label>
+                                        <input required name="name" type="text" class="base_input" />
+                                    </div>
+                                    <br />
+                                    <div class="input_area">
+                                        <label for="current_p">Disease Title</label>
+                                        <input required name="title" type="text" class="base_input" />
                                     </div>
                                     <br />
                                     <div class="input_area">
@@ -77,7 +84,7 @@ if(isset($_POST['add_treatment'])){
                                         </select>
                                     </div>
                                     <br />
-                                    <input name="add_treatment" type="submit" class="base_btn" value="Post" />
+                                    <input name="add_disease" type="submit" class="base_btn" value="Post" />
 
                                 </div>
                             </div>

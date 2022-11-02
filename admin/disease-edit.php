@@ -4,28 +4,30 @@
 if(isset($_GET['id'])){
   $id = $_GET['id'];
 }
-$row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM treatment WHERE id=$id"));
+$row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM disease WHERE id=$id"));
 
 
-if(isset($_POST['add_treatment'])){
-    $treatment =$_POST['treatment'];
-    $url = strtolower($treatment).".php";
+if(isset($_POST['add_disease'])){
+    $name =$_POST['name'];
+    $title =$_POST['title'];
     $content =$_POST['content'];
     $status =$_POST['status'];
+    
+    $url = strtolower($name).".php";
 
     $file_name = $_FILES['file']['name'];
     $file_tmp = $_FILES['file']['tmp_name'];
     move_uploaded_file($file_tmp,"../upload/$file_name");
 
     if(!empty($_FILES['file']['name'])){
-        $row = mysqli_query($conn,"UPDATE treatment SET treatment='$treatment',file='$file_name',url='$url',status='$status',content='$content' WHERE id=$id");
+        $row = mysqli_query($conn,"UPDATE disease SET name='$name',title='$title',file='$file_name',url='$url',status='$status',content='$content' WHERE id=$id");
     }else{
-        $row = mysqli_query($conn,"UPDATE treatment SET treatment='$treatment',url='$url',status='$status',content='$content' WHERE id=$id");
+        $row = mysqli_query($conn,"UPDATE disease SET name='$name',title='$title',url='$url',status='$status',content='$content' WHERE id=$id");
     }
 
     if($row){
-    $msg = "Successfully Create a New treatment";
-    header("location:treatment-edit.php?id=$id&&msg=$msg");
+    $msg = "Successfully Create a New disease";
+    header("location:disease-edit.php?id=$id&&msg=$msg");
     }else{
     echo "Something error!";
     }    
@@ -48,7 +50,7 @@ if(isset($_POST['add_treatment'])){
                                             <span class="icon">
                                                 <i class="fa fa-user"></i>
                                             </span>
-                                            <span class="text"> treatment </span>
+                                            <span class="text"> disease </span>
                                         </h6>
                                         <?php if(isset($msg)){ ?><div class="alert_info">
                                             <?php if(isset($msg)){echo $msg;}?>
@@ -64,8 +66,13 @@ if(isset($_POST['add_treatment'])){
                                     </div>
                                     <br />
                                     <div class="input_area">
-                                        <label for="current_p">Edit treatment</label>
-                                        <input required name="treatment" type="text" class="base_input" value="<?php echo $row['treatment']?>" />
+                                        <label for="current_p">Disease Name</label>
+                                        <input required name="name" type="text" class="base_input" value="<?php echo $row['name']?>" />
+                                    </div>
+                                    <br />
+                                    <div class="input_area">
+                                        <label for="current_p">Disease Title</label>
+                                        <input required name="title" type="text" class="base_input" value="<?php echo $row['title']?>" />
                                     </div>
                                     <br />
 
@@ -88,7 +95,7 @@ if(isset($_POST['add_treatment'])){
                                     </div>
                                     <br />
                                     
-                                    <input name="add_treatment" type="submit" class="base_btn" value="Save" />
+                                    <input name="add_disease" type="submit" class="base_btn" value="Save" />
                                 </div>
                             </div>
                         </form>

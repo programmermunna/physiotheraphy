@@ -9,7 +9,7 @@ if($id<1){
   header('location:index.php');
 }
 
-$treatment = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM treatment"));
+$disease = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM disease"));
 ?>
   <main class="content_wrapper">
     <!--===== main page content =====-->
@@ -55,7 +55,7 @@ $treatment = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM treatment"));
                         </span>
                         <span class="value">ccc</span>
                       </div>
-                      <div class="title">Total treatment</div>
+                      <div class="title">Total disease</div>
                     </div>
 
                     <div class="box">

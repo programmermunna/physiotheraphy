@@ -5,19 +5,19 @@ if(isset($_GET['id'])){
   $id = $_GET['id'];
 }
 
-if(isset($_POST['add_treatment'])){
-  $treatment =$_POST['treatment'];
-  $url = strtolower($treatment).".php";
+if(isset($_POST['add_disease'])){
+  $disease =$_POST['disease'];
+  $url = strtolower($disease).".php";
   $content =$_POST['content'];
-      $check = mysqli_query($conn,"SELECT * FROM treatment WHERE content='$content'");
+      $check = mysqli_query($conn,"SELECT * FROM disease WHERE content='$content'");
       if($check<1){
-        $msg = "Alrady Have Treatment. Please Insert Another";
-        header("location:treatment.php?msg=$msg");
+        $msg = "Alrady Have disease. Please Insert Another";
+        header("location:disease.php?msg=$msg");
       }else{
-      $row = mysqli_query($conn,"INSERT INTO treatment(treatment,url,content) VALUE('$treatment','$url','$content')");
+      $row = mysqli_query($conn,"INSERT INTO disease(disease,url,content) VALUE('$disease','$url','$content')");
       if($row){
-        $msg = "Successfully Create a New treatment";
-        header("location:treatment.php?msg=$msg");
+        $msg = "Successfully Create a New disease";
+        header("location:disease.php?msg=$msg");
       }else{
         echo "Something error!";
       }
@@ -41,7 +41,7 @@ if(isset($_POST['add_treatment'])){
                                         <span class="icon">
                                             <i class="fa fa-user"></i>
                                         </span>
-                                        <span class="text">All treatment </span>
+                                        <span class="text">All disease </span>
                                     </h6>
                                 </div>
                             </div>

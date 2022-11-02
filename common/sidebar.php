@@ -9,10 +9,10 @@
                 </h6> -->
         <ul class="ds_ul" data-ref="setting">
             <?php
-      $treatment = mysqli_query($conn, "SELECT * FROM treatment WHERE status='Publish'");
-      while ($row = mysqli_fetch_assoc($treatment)) { ?>
+            $disease = mysqli_query($conn, "SELECT * FROM disease WHERE status='Publish'");
+            while ($row = mysqli_fetch_assoc($disease)) { ?>
             <li><a href="index.php?page=<?php echo $row['url'] ?>"><i class="fa fa-user"></i>
-                    <span><?php echo $row['treatment'] ?></span></a></li>
+                    <span><?php echo $row['disease'] ?></span></a></li>
             <?php } ?>
 
         </ul>
