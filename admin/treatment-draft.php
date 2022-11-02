@@ -65,14 +65,14 @@ if(isset($_POST['add_treatment'])){
                                                 $currentPage = 1;
                                             }
                                             $startFrom = ($currentPage * $showRecordPerPage) - $showRecordPerPage;
-                                            $totalEmpSQL = "SELECT * FROM treatment WHERE status='Publish' ORDER BY id DESC";
+                                            $totalEmpSQL = "SELECT * FROM treatment WHERE status='Draft' ORDER BY id DESC";
                                             $allEmpResult = mysqli_query($conn, $totalEmpSQL);
                                             $totalEmployee = mysqli_num_rows($allEmpResult);
                                             $lastPage = ceil($totalEmployee/$showRecordPerPage);
                                             $firstPage = 1;
                                             $nextPage = $currentPage + 1;
                                             $previousPage = $currentPage - 1;
-                                            $empSQL = "SELECT * FROM treatment WHERE status='Publish' ORDER BY id DESC LIMIT $startFrom, $showRecordPerPage";
+                                            $empSQL = "SELECT * FROM treatment WHERE status='Draft' ORDER BY id DESC LIMIT $startFrom, $showRecordPerPage";
                                             $query = mysqli_query($conn, $empSQL);
                                             $i = 0;
                                             while($row = mysqli_fetch_assoc($query)){ $i++;?>

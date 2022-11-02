@@ -17,9 +17,15 @@
                     </a>
                   </li>                  
                   <li>
+                    <a href="treatment-draft.php">
+                    <i class="fa-solid fa-map"></i>
+                      <span>Treatment Draft</span>
+                    </a>
+                  </li>                
+                  <li>
                     <a href="treatment-all.php">
                     <i class="fa-solid fa-map"></i>
-                      <span>Treatment All</span>
+                      <span>Treatment Publish</span>
                     </a>
                   </li>
                   <li>

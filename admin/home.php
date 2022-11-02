@@ -9,12 +9,7 @@ if($id<1){
   header('location:index.php');
 }
 
-$ticket = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM ticket WHERE refarence !=''"));
-$solved = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM ticket WHERE solved='true'"));
 $treatment = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM treatment"));
-$user = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM user_info"));
-$Verified = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM user_info WHERE nid_verify='Verified'"));
-$pending = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM user_info WHERE nid_front !='' AND gmail_verify !='' AND nid_verify =''"));
 ?>
   <main class="content_wrapper">
     <!--===== main page content =====-->
@@ -38,7 +33,7 @@ $pending = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM user_info WHERE nid
                       <div class="value_area">
                         <span class="value_area_icon">
                         <i class="fa-solid fa-ticket"></i></span>
-                        <span class="value"><?php echo $ticket;?></span>
+                        <span class="value">aaaa</span>
                       </div>
                       <div class="title">Total Ticket</div>
                     </div>
@@ -48,7 +43,7 @@ $pending = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM user_info WHERE nid
                         <span class="value_area_icon">
                         <i class="fa-solid fa-ticket-simple"></i> 
                         </span>
-                        <span class="value"><?php echo $solved;?></span>
+                        <span class="value">bbb</span>
                       </div>
                       <div class="title">Solved Tickets</div>
                     </div>
@@ -58,7 +53,7 @@ $pending = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM user_info WHERE nid
                         <span class="value_area_icon">
                         <i class="fa-solid fa-cubes-stacked"></i>
                         </span>
-                        <span class="value"><?php echo $treatment;?></span>
+                        <span class="value">ccc</span>
                       </div>
                       <div class="title">Total treatment</div>
                     </div>
@@ -68,7 +63,7 @@ $pending = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM user_info WHERE nid
                         <span class="value_area_icon">
                         <i class="fa-solid fa-people-group"></i>
                         </span>
-                        <span class="value"><?php echo $user;?></span>
+                        <span class="value">ddd</span>
                       </div>
                       <div class="title">Total User</div>
                     </div>
@@ -78,7 +73,7 @@ $pending = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM user_info WHERE nid
                         <span class="value_area_icon">
                         <i class="fa-solid fa-people-group"></i>
                         </span>
-                        <span class="value"><?php echo $pending;?></span>
+                        <span class="value">eee</span>
                       </div>
                       <div class="title">Pending verify</div>
                     </div>
@@ -88,7 +83,7 @@ $pending = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM user_info WHERE nid
                         <span class="value_area_icon">
                         <i class="fa-solid fa-people-group"></i>
                         </span>
-                        <span class="value"><?php echo $Verified;?></span>
+                        <span class="value">fff</span>
                       </div>
                       <div class="title">Success Verify</div>
                     </div>

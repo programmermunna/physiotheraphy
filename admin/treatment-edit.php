@@ -11,15 +11,16 @@ if(isset($_POST['add_treatment'])){
     $treatment =$_POST['treatment'];
     $url = strtolower($treatment).".php";
     $content =$_POST['content'];
+    $status =$_POST['status'];
 
     $file_name = $_FILES['file']['name'];
     $file_tmp = $_FILES['file']['tmp_name'];
     move_uploaded_file($file_tmp,"../upload/$file_name");
 
     if(!empty($_FILES['file']['name'])){
-        $row = mysqli_query($conn,"UPDATE treatment SET treatment='$treatment',file='$file_name',url='$url',content='$content' WHERE id=$id");
+        $row = mysqli_query($conn,"UPDATE treatment SET treatment='$treatment',file='$file_name',url='$url',status='$status',content='$content' WHERE id=$id");
     }else{
-        $row = mysqli_query($conn,"UPDATE treatment SET treatment='$treatment',url='$url',content='$content' WHERE id=$id");
+        $row = mysqli_query($conn,"UPDATE treatment SET treatment='$treatment',url='$url',status='$status',content='$content' WHERE id=$id");
     }
 
     if($row){
@@ -72,9 +73,22 @@ if(isset($_POST['add_treatment'])){
                                         <label for="new_p">Edit Content</label>
                                         <textarea class="textarea" name="content" id="summernote"><?php echo $row['content']?></textarea>
                                     </div>
-                                    <br />
-                                    <input name="add_treatment" type="submit" class="base_btn" value="Save" />
 
+                                    <div class="input_area">
+                                        <label for="new_p">Edit Content</label>
+                                        <select class="base_input" name="status">
+                                        <?php if($row['status']=='Draft'){?>
+                                            <option selected value="Draft">Draft</option>
+                                            <option value="Publish">Publish</option>
+                                        <?php }else{?>
+                                            <option value="Draft">Draft</option>
+                                            <option selected value="Publish">Publish</option>
+                                        <?php }?>
+                                        </select>
+                                    </div>
+                                    <br />
+                                    
+                                    <input name="add_treatment" type="submit" class="base_btn" value="Save" />
                                 </div>
                             </div>
                         </form>

@@ -11,6 +11,7 @@ if(isset($_POST['add_treatment'])){
     $treatment =$_POST['treatment'];
     $url = strtolower($treatment).".php";
     $content =$_POST['content'];
+    $status =$_POST['status'];
 
     $file_name = $_FILES['file']['name'];
     $file_tmp = $_FILES['file']['tmp_name'];
@@ -21,7 +22,7 @@ if(isset($_POST['add_treatment'])){
     $msg = "Alrady Have Treatment. Please Insert Another";
     header("location:treatment.php?msg=$msg");
     }else{
-    $row = mysqli_query($conn,"INSERT INTO treatment(treatment,url,file,content) VALUE('$treatment','$url','$file_name','$content')");
+    $row = mysqli_query($conn,"INSERT INTO treatment(treatment,url,file,status,content) VALUE('$treatment','$url','$file_name','$status','$content')");
     if($row){
     $msg = "Successfully Create a New treatment";
     header("location:treatment.php?msg=$msg");
@@ -68,7 +69,15 @@ if(isset($_POST['add_treatment'])){
                                         <textarea class="textarea" name="content" id="summernote"></textarea>
                                     </div>
                                     <br />
-                                    <input name="add_treatment" type="submit" class="base_btn" value="Save" />
+                                    <div class="input_area">
+                                        <label for="new_p">Status</label>
+                                        <select class="base_input" name="status" id="">
+                                            <option value="Draft">Draft</option>
+                                            <option value="Publish">Publish</option>
+                                        </select>
+                                    </div>
+                                    <br />
+                                    <input name="add_treatment" type="submit" class="base_btn" value="Post" />
 
                                 </div>
                             </div>
