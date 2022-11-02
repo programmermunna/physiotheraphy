@@ -43,6 +43,7 @@ $show = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_info WHERE id
   <link
     href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Oswald:wght@200;300;400;500;600;700&display=swap"
     rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
 
   <!-- FONT-AWESOME -->
   <script src="https://kit.fontawesome.com/6788eb3be6.js" crossorigin="anonymous"></script>
@@ -54,7 +55,7 @@ $show = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_info WHERE id
 
   <!-- BEGIN CSS STYLES -->
   <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-  <link rel="stylesheet" href="css/custom.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="../css/custom.css" type="text/css" media="all" />
   <!-- END CSS STYLES -->
 </head>
 

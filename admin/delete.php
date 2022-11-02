@@ -7,42 +7,20 @@ $msg = "$src Has Been Deleted!";
 switch ($src) {
     case "treatment-all":
       $query = mysqli_query($conn,"DELETE FROM treatment WHERE id=$id");
-      if($query){
-          header("location:$src.php?msg=$msg");
-      }
+      if($query){ header("location:$src.php?msg=$msg");}
+      break;
+    case "appointment":
+      $query = mysqli_query($conn,"DELETE FROM $src WHERE id=$id");
+      if($query){ header("location:$src.php?msg=$msg");}
+      break;
+    case "ready-mail":
+      $query = mysqli_query($conn,"DELETE FROM ready_mail WHERE id=$id");
+      if($query){ header("location:$src.php?msg=$msg");}
       break;
     default:
       $msg = "Something is error. Please try again leter";
       header("location:index.php?msg=$msg");
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

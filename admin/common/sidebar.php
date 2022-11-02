@@ -9,11 +9,11 @@
                     <a href="index.php">  
                       <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
                     </a>
-                  </li>                  
+                  </li>                                  
                   <li>
-                    <a href="treatment.php">
+                    <a href="treatment-all.php">
                     <i class="fa-solid fa-map"></i>
-                      <span>Treatment</span>
+                      <span>Treatment All</span>
                     </a>
                   </li>                  
                   <li>
@@ -21,17 +21,17 @@
                     <i class="fa-solid fa-map"></i>
                       <span>Treatment Draft</span>
                     </a>
-                  </li>                
+                  </li>
                   <li>
-                    <a href="treatment-all.php">
-                    <i class="fa-solid fa-map"></i>
-                      <span>Treatment Publish</span>
+                    <a href="appointment.php">
+                    <i class="fa-solid fa-users"></i>
+                      <span>Appointment's</span>
                     </a>
                   </li>
                   <li>
-                    <a href="all-user.php">
+                    <a href="ready-mail.php">
                     <i class="fa-solid fa-users"></i>
-                      <span>Appointment's</span>
+                      <span>Ready Mail's</span>
                     </a>
                   </li>
                 </ul>

@@ -43,6 +43,7 @@ if(isset($_POST['add_treatment'])){
                                         </span>
                                         <span class="text">All treatment </span>
                                     </h6>
+                                    <a href="treatment.php">Add Treatment</a>
                                 </div>
                             </div>
 

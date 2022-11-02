@@ -61,15 +61,14 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website WHERE id
       <div class="header_left">
         <a href="index.php" class="logo">
           <img src="upload/<?php echo $website['logo'];?>" alt="" />
-          <span style="text-decoration:none; min-width: fit-content;"><?php echo $website['logo_text'];?></span>
+          <span style="text-decoration:none; min-width: fit-content;width:600px;"><?php echo $website['logo_text'];?></span>
         </a>
       </div>
 
       <ul class="header_right">
-        <li class="signup_btn show_fsp"><a style="font-size:20px;font-weight:400;" href="profile.php" class="">Blog</a></li>
-        <li class="signup_btn show_fsp"><a style="font-size:20px;font-weight:400;" href="profile.php" class="">Trams&Condition</a></li>
-        <li class="signup_btn show_fsp"><a style="font-size:20px;font-weight:400;" href="contact.php" class="">Contract</a></li>
-        <li class="signup_btn show_fsp"><a style="font-size:20px;font-weight:400;" href="profile.php" class="">Appointment</a></li>
+        <li class="signup_btn show_fsp"><a style="font-size:20px;font-weight:400;" href="profile.php" class="rubik">Trams&Condition</a></li>
+        <li class="signup_btn show_fsp"><a style="font-size:20px;font-weight:400;" href="contact.php" class="rubik">Contract</a></li>
+        <li class="signup_btn show_fsp"><a style="font-size:20px;font-weight:400;" href="appointment.php" class="rubik">Appointment</a></li>
       </ul>
     </div>
   </header>

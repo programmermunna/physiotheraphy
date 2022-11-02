@@ -20,9 +20,14 @@
                   <div class="dc_box_container" style="padding:0;">
                     <img style="width:100%;height:400px;" src="upload/<?php echo $row['file'];?>">
                   </div>
+                  <div style="text-align:center;padding:20px 0">
+                  <p class="rubik appo_btn">If you want to appoint</p>                
+                  <a style="margin-left:40px;font-size:20px" class="btn btn-success" href="appointment.php">Appoint Now</a>
+                </div>
+
                 </div>
                   <div style="padding:20px;"><h4><?php echo strtoupper($row['treatment']);?></h4></div>
-                  <div style="padding:20px;"><?php echo $row['content'];?></div>
+                  <div style="padding:20px;"><?php echo $row['content'];?></div>                  
               </div>
 
             </div>

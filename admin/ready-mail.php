@@ -1,26 +1,20 @@
 <?php include('common/header.php');?>
 <?php 
 
-if(isset($_GET['id'])){
-  $id = $_GET['id'];
+if(isset($_GET['msg'])){
+  $msg = $_GET['msg'];
 }
 
-if(isset($_POST['add_treatment'])){
-  $treatment =$_POST['treatment'];
-  $url = strtolower($treatment).".php";
-  $content =$_POST['content'];
-      $check = mysqli_query($conn,"SELECT * FROM treatment WHERE content='$content'");
-      if($check<1){
-        $msg = "Alrady Have Treatment. Please Insert Another";
-        header("location:treatment.php?msg=$msg");
-      }else{
-      $row = mysqli_query($conn,"INSERT INTO treatment(treatment,url,content) VALUE('$treatment','$url','$content')");
-      if($row){
-        $msg = "Successfully Create a New treatment";
-        header("location:treatment.php?msg=$msg");
-      }else{
-        echo "Something error!";
-      }
+
+if(isset($_POST['submit'])){
+    $subject =$_POST['subject'];
+    $message =$_POST['message'];
+    $row = mysqli_query($conn,"INSERT INTO ready_mail(subject,message) VALUE('$subject','$message')");
+    if($row){
+    $msg = "Successfully Create Ready Mail";
+    header("location:ready-mail.php?msg=$msg");
+    }else{
+    echo "Something error!";  
     }
 }
 ?>
@@ -31,8 +25,40 @@ if(isset($_POST['add_treatment'])){
             <div class="page_content">
                 <div class="dashboard_layout">
                     <?php include('common/sidebar.php');?>
-                    <div class="dashboard_content">                       
-                      
+
+                    <div class="dashboard_content">
+                        <form action="" method="POST">
+                            <div class="dc_box">
+                                <div class="dc_box_header">
+                                    <div class="dc_box_container">
+                                        <h6>
+
+                                            <span class="icon">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                            <span class="text">Add Mail Content </span>
+                                        </h6>                                        
+                                    </div>
+                                </div>
+
+                                <div class="dc_box_container">
+                                    <div class="input_area">
+                                        <label for="current_p">Subject</label>
+                                        <input required name="subject" type="text" class="base_input" />
+                                    </div>
+                                    <br />
+
+                                    <div class="input_area">
+                                        <label for="new_p">Message</label>
+                                        <input required name="message" type="text" class="base_input" />
+                                    </div>
+                                    <br />
+                                    <input name="submit" type="submit" class="base_btn" value="Save" />
+
+                                </div>
+                            </div>
+                        </form>
+                        <!-- ---------------------display box----------------- -->
                         <div class="dc_box">
                             <div class="dc_box_header">
                                 <div class="dc_box_container">
@@ -41,9 +67,8 @@ if(isset($_POST['add_treatment'])){
                                         <span class="icon">
                                             <i class="fa fa-user"></i>
                                         </span>
-                                        <span class="text">All treatment </span>
+                                        <span class="text">All Mail Content</span>
                                     </h6>
-                                    <a href="treatment.php">Add Treatment</a>
                                 </div>
                             </div>
 
@@ -53,7 +78,8 @@ if(isset($_POST['add_treatment'])){
                                         <thead>
                                             <tr>
                                                 <th>Sl.</th>
-                                                <th>treatment</th>
+                                                <th>Category</th>
+                                                <th>Category Description</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -66,25 +92,28 @@ if(isset($_POST['add_treatment'])){
                                                 $currentPage = 1;
                                             }
                                             $startFrom = ($currentPage * $showRecordPerPage) - $showRecordPerPage;
-                                            $totalEmpSQL = "SELECT * FROM treatment WHERE status='Publish' ORDER BY id DESC";
+                                            $totalEmpSQL = "SELECT * FROM ready_mail ORDER BY id DESC";
                                             $allEmpResult = mysqli_query($conn, $totalEmpSQL);
                                             $totalEmployee = mysqli_num_rows($allEmpResult);
                                             $lastPage = ceil($totalEmployee/$showRecordPerPage);
                                             $firstPage = 1;
                                             $nextPage = $currentPage + 1;
                                             $previousPage = $currentPage - 1;
-                                            $empSQL = "SELECT * FROM treatment WHERE status='Publish' ORDER BY id DESC LIMIT $startFrom, $showRecordPerPage";
+                                            $empSQL = "SELECT * FROM ready_mail ORDER BY id DESC LIMIT $startFrom, $showRecordPerPage";
                                             $query = mysqli_query($conn, $empSQL);
                                             $i = 0;
                                             while($row = mysqli_fetch_assoc($query)){ $i++;?>
                                             <tr>
                                                 <td><?php echo $i;?></td>
-                                                <td><img style="width:150px;height:50px;" src="../upload/<?php echo $row['file'];?>"></td>
-                                                <td><?php echo $row['treatment'];?></td>
+                                                <td><?php echo $row['subject'];?></td>
+                                                <td><?php echo $row['message'];?></td>
                                                 <td>
-                                                     <a class="btn btn-success" href="treatment-edit.php?id=<?php echo $row['id'];?>">Edit</a>
-                                                     <a class="btn btn-danger" href="delete.php?src=treatment-all&&id=<?php echo $row['id'];?>">Delete</a>
-                                                     <a target="_blank" class="btn btn-success" href="../index.php?page=<?php echo $row['url'];?>">View</a>
+
+                                                <?php if($show['role']=='Moderator'){ ?>
+                                                     <a onclick="alert('Moderator can not delete')" class="btn btn-danger" href="#!">Delete</a>
+                                                      <?php  }else{ ?>
+                                                     <a class="btn btn-danger" href="delete.php?src=ready-mail&&id=<?php echo $row['id'];?>">Delete</a>
+                                                    <?php }?>
                                                     
                                                 </td>
                                             </tr>
@@ -96,8 +125,10 @@ if(isset($_POST['add_treatment'])){
                         </div>
 
                         <div class="pagi" style="display: flex; justify-content: space-between;">
+
                             <nav>
                                 <ul class="">
+
                                     <?php if($currentPage >= 2) { ?>
                                     <li class="pagination"><a class="page-link"
                                             href="?page=<?php echo $previousPage ?>">Previws</a>
