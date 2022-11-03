@@ -142,10 +142,10 @@ label {
   border-radius: 3px;
   padding: 0 12px;
   padding-left: 52px;
-  outline: 2px solid #ddd;
+  outline: 1px solid #ddd;
 }
 .base_input_icon input:focus {
-  outline: 2px solid #5f22d1;
+  outline: 1px solid #5f22d1;
 }
 .base_input_icon input:disabled {
   cursor: not-allowed;
@@ -218,11 +218,12 @@ label {
   height: 40px;
   color: #fff;
   font-size: 12px;
-  background: #5f22d1;
+  background: #0072ffc9;
   border-radius: 3px;
+  border:none;
 }
 .base_btn:focus {
-  outline: 2px solid #5f22d1;
+  outline: 2px solid #0072ffc9;
   outline-offset: 2px;
 }
 
@@ -347,7 +348,7 @@ label {
   top: 0;
   left: 0;
   right: 0;
-  background: #fff;
+  background: #0072ff;
   height: 80px;
   box-shadow: 0px 0px 5px 0px #ddd;
   z-index: 99;
@@ -380,6 +381,7 @@ label {
   font-size: 24px;
   font-weight: 600;
   font-family: 'Rubik', sans-serif;
+  color: #fff;
 }
 .header .container .header_right {
   list-style: none;
@@ -1627,7 +1629,7 @@ footer.main_footer .footer_container .footer_right {
   border-radius: 3px;
 }
 .dashboard_layout .dashboard_sidebar .dashboard_sidebar_item ul li a:hover {
-  background: #2a3744;
+  background: #0072ffc9;
   color: #fff;
 }
 .dashboard_layout .dashboard_content {

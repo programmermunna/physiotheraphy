@@ -1,9 +1,9 @@
 <div class="dashboard_sidebar">
               <div class="dashboard_sidebar_item">
-                <h6 class="ds_title" data-ref="my-profile">
+                <!-- <h6 class="ds_title" data-ref="my-profile">
                   <span class="text"> FUNCTIONS </span>
                   <span class="icon"><i class="fa-solid fa-chevron-down"></i></span>
-                </h6>
+                </h6> -->
                 <ul class="ds_ul" data-ref="my-profile">
                   <li>
                     <a href="index.php">  
@@ -13,13 +13,13 @@
                   <li>
                     <a href="service-all.php">
                     <i class="fa-solid fa-map"></i>
-                      <span>service All</span>
+                      <span>Service All</span>
                     </a>
                   </li>                  
                   <li>
                     <a href="service-draft.php">
                     <i class="fa-solid fa-map"></i>
-                      <span>service Draft</span>
+                      <span>Service Draft</span>
                     </a>
                   </li>
                   <li>
@@ -40,7 +40,7 @@
               <div class="dashboard_sidebar_item">
                 <h6 class="ds_title" data-ref="setting">
                   <span class="text"> SETTING </span>
-                  <span class="icon"><i class="fa-solid fa-chevron-down"></i></span>
+                  <!-- <span class="icon"><i class="fa-solid fa-chevron-down"></i></span> -->
                 </h6>
                 <ul class="ds_ul" data-ref="setting">              
                               

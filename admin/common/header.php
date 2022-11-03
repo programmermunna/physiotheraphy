@@ -22,14 +22,14 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website WHERE id
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>JoblessBD - Earn money with easy tasks</title>
+  <title><?php echo $website['title']?></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="HandheldFriendly" content="true" />
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="../upload/<?php echo $website['favicon']?>" type="image/x-icon" />
   <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -71,29 +71,29 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website WHERE id
       </div>
 
       <ul class="header_right">
-        <li class="deposit_btn">
-          <a href="deposit.php" class="base_gradient_btn blue">
-            <span class="icon"> <i class="fa-solid fa-wallet"></i> </span>
-            <span>Deposit</span>
-          </a>
-        </li>
+        
 
-        <li class="signup_btn show_fsp" data-ref="signup">
-          <a target="_blank" href="../index.php" class="">
+        <li>
+          <a style="color:#fff" target="_blank" href="../index.php" class="">
             <span>Visit Site</span>
           </a>
         </li>
         
 
-        <li class="signup_btn show_fsp" data-ref="signup">
-          <a href="profile.php" class="">
+        <li class="admin_name">
+          <a href="profile.php">
             <span><?php echo $show['name'];?></span>
           </a>
         </li>
 
-        <li class="my_profile_btn">
+        <li style="margin-left:-40px" class="my_profile_btn">
           <a href="#" id="profile-options-toggler">
+            <?php
+            if(empty($show['img'])){ ?>
+            <img class="profile_image" src="../upload/anonymouse.jpg" alt="" />
+         <?php  }else{?>
             <img class="profile_image" src="../upload/<?php echo $show['img'];?>" alt="" />
+            <?php }?>
           </a>
 
           <div class="profile-options">
@@ -124,6 +124,7 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website WHERE id
 
           </div>
         </li>
+
       </ul>
     </div>
   </header>

@@ -21,12 +21,11 @@
                                 <?php 
                                 if(empty($row['file'])){}else{?>
                                 <div class="dc_box_container" style="padding:0;">
-                                    <img style="width:100%;height:400px;" src="upload/<?php echo $row['file'];?>">
+                                    <img style="width:100%;height:300px;" src="upload/<?php echo $row['file'];?>">
                                 </div>
                                 <div style="text-align:center;padding:20px 0">
-                                    <p class="rubik appo_btn">If you want to appoint</p>
-                                    <a style="margin-left:40px;font-size:20px" class="btn btn-success"
-                                        href="appointment.php">Appoint Now</a>
+                                    <a style="margin:0 10px;font-size:20px" class="btn btn-success" href="appointment.php">Appoint Now</a>
+                                    <a style="margin:0 10px;font-size:20px" class="btn btn-success" href="tel:01784489515">Call Now</a>
                                 </div>
                                 <?php }?>                                
                             </div>

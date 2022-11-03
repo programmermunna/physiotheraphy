@@ -5,24 +5,24 @@
           </div>
           <ul class="footer_right">
           <li>
-              <a href="<?php echo $website['gmail'];?>" style="color: blueviolet">
+              <a href="<?php echo $website['gmail'];?>" style="color: #0072ffc9">
               <i class="fa-solid fa-square-envelope"></i>
               </a>
             </li>
             <li>
-              <a href="<?php echo $website['facebook'];?>" style="color: blueviolet">
+              <a href="<?php echo $website['facebook'];?>" style="color: #0072ffc9">
               <i class="fa-brands fa-facebook"></i>
               </a>
             </li>
 
             <li>
-              <a href="<?php echo $website['youtube'];?>" style="color: blueviolet">
+              <a href="<?php echo $website['youtube'];?>" style="color: #0072ffc9">
               <i class="fa-brands fa-youtube"></i>
               </a>
             </li>
             
             <li>
-              <a href="<?php echo $website['linkedin'];?>" style="color: blueviolet">
+              <a href="<?php echo $website['linkedin'];?>" style="color: #0072ffc9">
                 <i class="fab fa-linkedin"></i>
               </a>
             </li>

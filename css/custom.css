@@ -12,27 +12,40 @@
     font-family: 'Rubik', sans-serif;
 }
 
-.appo_btn{
+.appo_btn {
     display: inline-block;
     font-size: 20px;
 }
 
 .slicknav_menu {
-	display:none;
+    display: none;
 }
 
 @media screen and (max-width: 678px) {
-	#menu {
-		display:none;
-	}
-	
-	.slicknav_menu {
-		display:block;
-	}
+    #menu {
+        display: none;
+    }
+
+    .slicknav_menu {
+        display: block;
+    }
 }
 
 @media screen and (max-width: 678px) {
-	.main_footer{
+    .main_footer {
         margin: 0 auto;
     }
+}
+
+/* --------------next work------------ */
+
+.admin_name>a {
+    border: 1px solid #fff;
+    padding: 10px;
+    color: #fff;
+    border-right:none;
+    border-radius:50px;
+    padding-right: 52px;
+    box-shadow: 1px 1px 1px #ddd;
+    background: #0072ffc9;
 }

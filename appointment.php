@@ -41,9 +41,6 @@ if(isset($_POST['save'])){
                                 <form action="" method="POST" enctype="multipart/form-data">
                                     <div class="dc_box_container">
                                         <h6>
-                                            <span class="icon">
-                                                <i class="fa fa-user"></i>
-                                            </span>
                                             <span class="text">Appointment Now</span>
                                         </h6> 
                                     </div>
@@ -52,10 +49,10 @@ if(isset($_POST['save'])){
                             <div class="dc_box_container">
 
                                 <div>
-                                    <label for="twitter_p"> Name</label>
+                                    <label for="twitter_p">Full Name</label>
                                     <div class="base_input_icon">
                                         <div class="icon"><span><i class="fa-solid fa-file-signature"></i></span></div>
-                                        <input name="name" type="text" />
+                                        <input required name="name" type="text" placeholder="Ex: John Doa" />
                                     </div>
                                 </div>
                                 <br />
@@ -64,16 +61,16 @@ if(isset($_POST['save'])){
                                     <label for="twitter_p"> Phone</label>
                                     <div class="base_input_icon">
                                         <div class="icon"><span><i class="fa-solid fa-phone"></i></span></div>
-                                        <input name="phone" type="text" />
+                                        <input required name="phone" type="text" placeholder="Ex: 017......" />
                                     </div>
                                 </div>
                                 <br />
 
                                 <div>
-                                    <label for="twitter_p"> Email</label>
+                                    <label for="twitter_p"> Email (optional)</label>
                                     <div class="base_input_icon">
                                         <div class="icon"><span><i class="fa-solid fa-envelope"></i></span></div>
-                                        <input name="email" type="text" />
+                                        <input name="email" type="text" placeholder="Ex: example.gmail.com" />
                                     </div>
                                 </div>
                                 <br />
@@ -82,13 +79,13 @@ if(isset($_POST['save'])){
                                     <label for="twitter_p"> Address</label>
                                     <div class="base_input_icon">
                                         <div class="icon"><span><i class="fa-solid fa-location-dot"></i></span></div>
-                                        <input name="address" type="text" />
+                                        <input required name="address" type="text" placeholder="Road#46, House#34, Gulshan-2, Dhaka-1212, Bangladesh" />
                                     </div>
                                 </div>
                                 <br />
 
                                 <div>
-                                    <label for="twitter_p"> Date</label>
+                                    <label for="twitter_p"> Date (optional)</label>
                                     <div class="base_input_icon">
                                         <div class="icon"><span><i class="fa-regular fa-calendar"></i></span></div>
                                         <input name="date" type="date" />
@@ -97,15 +94,15 @@ if(isset($_POST['save'])){
                                 <br />
 
                                 <div>
-                                    <label for="twitter_p"> Note</label>
+                                    <label for="twitter_p">Discribe Your Problem</label>
                                     <div class="base_input_icon">
-                                        <textarea name="message" class="textarea"></textarea>
+                                    <textarea required name="message" class="textarea" placeholder=""></textarea>
                                     </div>
                                 </div>
                                 <br />  
 
                                 <div>
-                                    <label for="twitter_p"> Photo</label>
+                                    <label for="twitter_p">Upload Your Recent Prescription (optional)</label>
                                     <div class="base_input_icon">
                                         <input type="file" name="file" style="margin:0;padding:0;padding-top:10px;padding-left:10px;">
                                     </div>

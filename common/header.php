@@ -21,14 +21,14 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website WHERE id
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>JoblessBD - Earn money with easy tasks</title>
+  <title><?php echo $website['title']?></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="HandheldFriendly" content="true" />
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="upload/<?php echo $website['favicon']?>" type="image/x-icon" />
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -59,7 +59,7 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website WHERE id
   <header class="header">
     <div class="container">
       <div class="header_left">
-        <a href="index.php" class="logo">
+        <a style="color:#fff;" href="index.php" class="logo">
           <?php 
           if(empty($website['logo_text'])){ ?>
           <img style="width:200px;height:120px" src="upload/<?php echo $website['logo'];?>" />
