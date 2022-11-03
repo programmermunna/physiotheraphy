@@ -71,8 +71,8 @@ if(isset($_POST['submit'])){
                                         <thead>
                                             <tr>
                                                 <th>Sl.</th>
-                                                <th>Category</th>
-                                                <th>Category Description</th>
+                                                <th>Subject</th>
+                                                <th>Message</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -100,13 +100,9 @@ if(isset($_POST['submit'])){
                                                 <td><?php echo $i;?></td>
                                                 <td><?php echo $row['subject'];?></td>
                                                 <td><?php echo $row['message'];?></td>
-                                                <td>
-
-                                                <?php if($show['role']=='Moderator'){ ?>
-                                                     <a onclick="alert('Moderator can not delete')" class="btn btn-danger" href="#!">Delete</a>
-                                                      <?php  }else{ ?>
+                                                <td style="display:flex;gap:10px;">
+                                                     <a class="btn btn-success" href="ready-mail-edit.php?&&id=<?php echo $row['id'];?>">Edit</a>
                                                      <a class="btn btn-danger" href="delete.php?src=ready-mail&&id=<?php echo $row['id'];?>">Delete</a>
-                                                    <?php }?>
                                                     
                                                 </td>
                                             </tr>

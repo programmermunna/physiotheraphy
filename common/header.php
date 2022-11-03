@@ -61,7 +61,7 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website WHERE id
       <div class="header_left">
         <a href="index.php" class="logo">
           <?php 
-          if(!empty($website['logo'])){ ?>
+          if(empty($website['logo_text'])){ ?>
           <img style="width:200px;height:120px" src="upload/<?php echo $website['logo'];?>" />
         <?php }else{?>
           <span style="text-decoration:none; min-width: fit-content;width:600px;"><?php echo $website['logo_text'];?></span>
@@ -85,11 +85,3 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website WHERE id
       </ul>
     </div>
   </header>
-
-  <script>
-    $(document).ready(function(){
-        $('#menu').slicknav();
-    })
-
-
-</script>

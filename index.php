@@ -19,10 +19,7 @@
                           <div class="dc_box">
                             <div class="dc_box_header">
                                 <?php 
-                                if(empty($row['file'])){
-
-                                }else{
-                                ?>
+                                if(empty($row['file'])){}else{?>
                                 <div class="dc_box_container" style="padding:0;">
                                     <img style="width:100%;height:400px;" src="upload/<?php echo $row['file'];?>">
                                 </div>
@@ -33,9 +30,9 @@
                                 </div>
                                 <?php }?>                                
                             </div>
-                            <div style="padding:20px;">
-                                <h4><?php echo strtoupper($row['title']);?></h4>
-                            </div>
+                            <?php if(empty($row['title'])){}else{?>
+                            <div style="padding:20px;"><h4><?php echo strtoupper($row['title']);?></h4></div>
+                            <?php }?>
                             <div style="padding:20px;"><?php echo $row['content'];?></div>
                         </div>
 

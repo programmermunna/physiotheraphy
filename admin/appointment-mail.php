@@ -8,9 +8,9 @@ $ready_mail = mysqli_query($conn,"SELECT * FROM ready_mail");
 
 if(isset($_POST['submit'])){    
 
-$subject = $_POST['subject'];
-
-
+$sub = $_POST['subject'];
+$message = $_POST['message'];
+$insert = mysqli_query($conn,"INSERT INTO ready_mail(subject,message) VALUE('$sub','$message')");
 
 $mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail WHERE id=1"));
 $appointment = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM appointment WHERE id=$id"));
@@ -25,8 +25,8 @@ $site_email = $mail['site_email'];
 $site_name = $mail['site_replay_email'];
 
 $address = $email;
+$subject = $sub;
 $body = $message;
-$subject = 'Your warranty has been Received';
 $send = sendVarifyCode($smtp_host,$smtp_username,$smtp_password,$smtp_port,$smtp_secure,$site_email,$site_name,$address,$body,$subject);
 
 $msg = 'Your Mail was sent successfully.';
@@ -59,10 +59,10 @@ header("location:pending-status.php?msg=$msg");
 
                             <div class="dc_box_container">
                                 <div>
-                                    <label for="twitter_p"> Select Text</label>
+                                    <label for="twitter_p"> Select Subject</label>
                                     <div class="base_input_icon">
-                                        <select id="select_sub" class="base_input" name="select">
-                                            <option selected value="">Select Ready Message</option>      
+                                        <select id="select_sub" class="base_input">
+                                            <option selected style="display:none;" value="">Select Ready Message</option>      
                                         <?php 
                                             while($data = mysqli_fetch_assoc($ready_mail)){ ?>
                                             <option value="<?php echo $data['subject']?>"><?php echo $data['subject']?></option>
@@ -70,7 +70,23 @@ header("location:pending-status.php?msg=$msg");
                                         </select>
                                     </div>
                                 </div>
-                                <h5>OR</h5>
+                                <br>
+                                <div>
+                                    <label for="twitter_p"> Select Message</label>
+                                    <div class="base_input_icon">
+                                        <select id="select_mess" class="base_input">
+                                            <option selected style="display:none;" value="">Select Ready Message</option>      
+                                        <?php 
+                                            $ready_mail2 = mysqli_query($conn,"SELECT * FROM ready_mail");
+                                            while($data = mysqli_fetch_assoc($ready_mail2)){ ?>
+                                            <option value="<?php echo $data['message']?>"><?php echo $data['message']?></option>
+                                        <?php }?>                                            
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr>
+                                <h6>OR</h6>
+                                <hr>
                                 <div class="input_area">
                                     <label for="current_p">Subject</label>
                                     <input name="subject" type="text" id="subject" class="base_input" />
@@ -78,7 +94,7 @@ header("location:pending-status.php?msg=$msg");
                                 <br>
                                 <div class="input_area"> 
                                     <label for="current_p">Message</label>
-                                    <textarea class="textarea" id="message"></textarea>
+                                    <textarea name="message" class="textarea message_area"></textarea>
                                 </div>                                
                                 <br><br>
                                 <input name="submit" type="submit" class="base_btn"
@@ -93,12 +109,18 @@ header("location:pending-status.php?msg=$msg");
 
         <script>
             const select = document.querySelector("#select_sub");
+            const select_mess = document.querySelector("#select_mess");
             const subject = document.querySelector("#subject");
-            const message = document.querySelector("#message");
-
+            const message_area = document.querySelector(".message_area");
+            
+            
             select.addEventListener("change",()=>{
             subject.value=select.value;
-            });
+            }); 
+
+            select_mess.addEventListener("change",()=>{
+                message_area.value=select_mess.value;
+            });0
         </script>
 
         <?php include('common/footer.php');?>
