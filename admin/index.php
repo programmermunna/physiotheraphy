@@ -24,7 +24,10 @@ if(isset($_POST['login'])){
       $_SESSION['admin_id'] = $id;
       setcookie('admin_id', $id , time()+86000);
       header('location:home.php');
-  } 
+  }else{
+    $msg = "Your Email Or Passwor is Wrong!";
+    header("location:index.php?msg=$msg");
+  }
 }
 
 ?>
@@ -56,73 +59,7 @@ if(isset($_POST['login'])){
   <!-- END CSS STYLES -->
 </head>
 
-<body>
-  <!-- Header -->
-  <header class="header">
-    <div class="container">
-      <div class="header_left">
-        <a href="index.php" class="logo">
-          <span>Dashboard</span>
-        </a>
-      </div>
-
-      <ul class="header_right">
-        <li class="deposit_btn">
-          <a href="#" class="show_fsp" data-ref="login">
-            <span class="icon"> <i class="fa-solid fa-wallet"></i> </span>
-            <span>Deposit</span>
-          </a>
-        </li>
-
-        <li class="login_btn show_fsp" data-ref="login">
-          <a href="#" class="base_gradient_btn">
-            <span class="icon"><i class="fa-solid fa-lock"></i> </span>
-            <span>Login</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </header>
-
-  <main class="content_wrapper">
-    <!--===== main page content =====-->
-    <div class="content">
-      <div class="container">  
-          <!-- Login Popup -->
-  <div class="full_screen_popup" ">
-    <div class="fsp_overlay"></div>
-    <form class="fsp_content" action="" method="POST">
-      <h6>Login</h6>
-
-      <div>
-        <label for="number"><small>Mobile Number</small></label>
-        <div class="base_input_icon">
-          <div class="icon">
-            <span>
-              <i class="fa-solid fa-phone"></i>
-            </span>
-          </div>
-          <input name="phone" type="text" placeholder="Number" id="number" required />
-        </div>
-      </div>
-
-      <div>
-        <label for="password"><small>Password</small></label>
-        <div class="base_input_icon">
-          <div class="icon">
-            <span><i class="fa-solid fa-lock"></i> </span>
-          </div>
-          <input name="pass" type="password" placeholder="Password" id="password" required />
-        </div>
-      </div>
-      <input type="submit" name="login" class="base_btn" value="Login" />
-    </form>
-  </div>
-      </div>
-    </div>
-    <!--===== main page content =====-->
-  </main>
-
+<body style="background:#3690FF">
   <!-- All Popups -->
   <div class="full_screen_popup" data-ref="login">
     <div class="fsp_overlay"></div>
@@ -130,7 +67,7 @@ if(isset($_POST['login'])){
       <h6>Login</h6>
 
       <div>
-        <label for="number"><small>Mobile Number</small></label>
+        <label for="number"><small>Email</small></label>
         <div class="base_input_icon">
           <div class="icon">
             <span>

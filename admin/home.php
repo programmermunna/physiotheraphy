@@ -8,7 +8,6 @@ if($id<1){
   header('location:index.php');
 }
 $appointment = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM appointment"));
-$users = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM admin_info WHERE role='User'"));
 $visitors = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM visitors"));
 $visitors = $visitors['visitor'];
 $service = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM service WHERE name !='index'"));
@@ -70,16 +69,6 @@ $service_draft = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM service WHERE
                         <span class="value"><?php echo $appointment;?></span>
                       </div>
                       <div class="title">Total Appointment</div>
-                    </div>
-
-                    <div class="box">
-                      <div class="value_area">
-                        <span class="value_area_icon">
-                        <i class="fa-solid fa-people-group"></i>
-                        </span>
-                        <span class="value"><?php echo $users;?></span>
-                      </div>
-                      <div class="title">Total Users</div>
                     </div>
 
                     <div class="box">

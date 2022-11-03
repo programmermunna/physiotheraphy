@@ -49,3 +49,8 @@
     box-shadow: 1px 1px 1px #ddd;
     background: #0072ffc9;
 }
+.chatbox{
+    position:fixed;
+    right: 50px;
+    bottom:50px;
+}

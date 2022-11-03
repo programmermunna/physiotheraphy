@@ -14,6 +14,7 @@ if(isset($_POST['save'])){
     $youtube = $_POST['youtube'];
     $linkedin = $_POST['linkedin'];
     $f_text = $_POST['f_text'];
+    $chatbox = $_POST['chatbox'];
 
     $file_name = $_FILES['file']['name'];
     $file_tmp = $_FILES['file']['tmp_name'];
@@ -24,13 +25,13 @@ if(isset($_POST['save'])){
     move_uploaded_file($favicon_tmp,"../upload/$favicon_name");
 
     if(empty($file_name)){
-        $sql = "UPDATE website SET favicon='$favicon_name',title='$title',logo_text='$logo_text', gmail='$gmail', facebook='$facebook', youtube='$youtube', linkedin='$linkedin', f_text='$f_text' WHERE id=1";
+        $sql = "UPDATE website SET favicon='$favicon_name',title='$title',logo_text='$logo_text', gmail='$gmail', facebook='$facebook', youtube='$youtube', linkedin='$linkedin', f_text='$f_text',chatbox='$chatbox' WHERE id=1";
     }elseif(empty($favicon_name)){
-        $sql = "UPDATE website SET logo='$file_name',title='$title',logo_text='$logo_text', gmail='$gmail', facebook='$facebook', youtube='$youtube', linkedin='$linkedin', f_text='$f_text' WHERE id=1";
+        $sql = "UPDATE website SET logo='$file_name',title='$title',logo_text='$logo_text', gmail='$gmail', facebook='$facebook', youtube='$youtube', linkedin='$linkedin', f_text='$f_text',chatbox='$chatbox' WHERE id=1";
     }elseif(empty($favicon_name) || empty($file_name)){
-        $sql = "UPDATE website SET title='$title',logo_text='$logo_text', gmail='$gmail', facebook='$facebook', youtube='$youtube', linkedin='$linkedin', f_text='$f_text' WHERE id=1";
+        $sql = "UPDATE website SET title='$title',logo_text='$logo_text', gmail='$gmail', facebook='$facebook', youtube='$youtube', linkedin='$linkedin', f_text='$f_text',chatbox='$chatbox' WHERE id=1";
     }else{
-        $sql = "UPDATE website SET favicon='$favicon_name',title='$title',logo='$file_name',logo_text='$logo_text', gmail='$gmail', facebook='$facebook', youtube='$youtube', linkedin='$linkedin', f_text='$f_text' WHERE id=1";
+        $sql = "UPDATE website SET favicon='$favicon_name',title='$title',logo='$file_name',logo_text='$logo_text', gmail='$gmail', facebook='$facebook', youtube='$youtube', linkedin='$linkedin', f_text='$f_text',chatbox='$chatbox' WHERE id=1";
     }
     
   $query = mysqli_query($conn,$sql);
@@ -57,8 +58,7 @@ if(isset($_POST['save'])){
                                 <form action="" method="POST" enctype="multipart/form-data">
                                     <div class="dc_box_container">
                                         <h6>
-                                            <span class="icon"><i class="fa fa-user"></i></span>
-                                            <span class="text"> Website setting </span>
+                                            <span class="text"> Header setting </span>
                                         </h6>
                                     </div>
                             </div>
@@ -88,6 +88,13 @@ if(isset($_POST['save'])){
                                     </div>
                                 </div>
                                 <br>
+                                <br>
+                                    <div class="">
+                                        <h6>
+                                            <span class="text"> Footer setting </span>
+                                        </h6>
+                                    </div>
+                                    <hr>
                                 <div class="flex_inputs">
                                     <div class="input_area">
                                         <label>Gmail</label>
@@ -114,6 +121,13 @@ if(isset($_POST['save'])){
                                     <div class="input_area">
                                         <labelfor="smtp_user_name">Footer Text</labelfor=>
                                         <input name="f_text" type="text" class="base_input"value="<?php echo $website['f_text'];?>" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="flex_inputs">
+                                    <div class="input_area">
+                                        <labelfor="smtp_user_name">Chat Box</labelfor=>
+                                        <input name="chatbox" type="text" class="base_input" />
                                     </div>
                                 </div>
                                 <br />

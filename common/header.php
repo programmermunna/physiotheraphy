@@ -73,15 +73,6 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website WHERE id
         <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="index.php?page=tarms-condition.php" class="rubik">Trams&Condition</a></li>
         <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="contact.php" class="rubik">Contract</a></li>
         <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="appointment.php" class="rubik">Appointment</a></li>
-
-        <?php 
-        if($id<1){ ?>
-        <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="login.php" class="rubik">Login</a></li>
-        <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="sign-in.php" class="rubik">Sing-In</a></li>
-        <?php  }else{?>
-        <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="my-account.php" class="rubik">My Account</a></li>
-        <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="logout.php" class="rubik">Logout</a></li>
-        <?php }?>
       </ul>
     </div>
   </header>

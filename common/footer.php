@@ -27,13 +27,10 @@
                 <i class="fab fa-linkedin"></i>
               </a>
             </li>
-
           </ul>
         </div>
       </footer>
-
-
-      </div>
+      <div class="chatbox"><?php echo $website['chatbox'];?></div>
     <!--===== main page content =====-->
   </main>
   <script src="js/jquery.min.js"></script>

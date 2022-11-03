@@ -91,7 +91,7 @@ if(isset($_POST['add_service'])){
                                                 <td><?php echo $row['date'];?></td>
 
                                                 <td>
-                                                     <a class="btn btn-success" href="appointment-edit.php?id=<?php echo $row['id'];?>">Seen</a>
+                                                     <a class="btn btn-success" href="appointment-edit.php?id=<?php echo $row['id'];?>">View</a>
                                                      <a class="btn btn-danger" href="delete.php?src=appointment&&id=<?php echo $row['id'];?>">Delete</a>
                                                      <a class="btn btn-success" href="appointment-mail.php?id=<?php echo $row['id'];?>">Send</a>
                                                 </td>
