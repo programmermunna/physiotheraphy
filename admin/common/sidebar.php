@@ -11,15 +11,15 @@
                     </a>
                   </li>                                  
                   <li>
-                    <a href="disease-all.php">
+                    <a href="service-all.php">
                     <i class="fa-solid fa-map"></i>
-                      <span>disease All</span>
+                      <span>service All</span>
                     </a>
                   </li>                  
                   <li>
-                    <a href="disease-draft.php">
+                    <a href="service-draft.php">
                     <i class="fa-solid fa-map"></i>
-                      <span>disease Draft</span>
+                      <span>service Draft</span>
                     </a>
                   </li>
                   <li>

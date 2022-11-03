@@ -1574,7 +1574,7 @@ footer.main_footer .footer_container .footer_right {
 }
 @media only screen and (min-width: 1023px) {
   .dashboard_layout .dashboard_sidebar {
-    width: 500px;
+    width: 350px;
   }
 }
 @media only screen and (max-width: 768px) {

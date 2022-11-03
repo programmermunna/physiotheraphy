@@ -1,11 +1,5 @@
 <?php include('common/header.php');?>
 <?php 
-
-if(isset($_GET['msg'])){
-  $msg = $_GET['msg'];
-}
-
-
 if(isset($_POST['submit'])){
     $subject =$_POST['subject'];
     $message =$_POST['message'];
@@ -186,3 +180,4 @@ if(isset($_POST['submit'])){
         </div>
 
         <?php include('common/footer.php');?>
+        <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>

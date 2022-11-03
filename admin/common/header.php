@@ -17,6 +17,7 @@ if($id<1){
   header('location:index.php');
 }
 $show = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_info WHERE id=$id"));
+$website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website WHERE id=1"));
 ?>
 <!DOCTYPE html>
 <html lang="en">

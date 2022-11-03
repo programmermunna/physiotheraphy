@@ -4,14 +4,13 @@
 if(isset($_SESSION['admin_id'])){
   $id = $_SESSION['admin_id'];
 }
-if(isset($_GET['msg'])){
-    $msg = $_GET['msg'];
-  }
 $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website WHERE id=1"));
 
 if(isset($_POST['save'])){
     $logo_text = $_POST['logo_text'];
     $gmail = $_POST['gmail'];
+    $facebook = $_POST['facebook'];
+    $youtube = $_POST['youtube'];
     $linkedin = $_POST['linkedin'];
     $f_text = $_POST['f_text'];
 
@@ -20,9 +19,9 @@ if(isset($_POST['save'])){
     move_uploaded_file($file_tmp,"../upload/$file_name");
 
     if(empty($file_name)){
-        $sql = "UPDATE website SET logo_text='$logo_text', gmail='$gmail', linkedin='$linkedin', f_text='$f_text' WHERE id=1";
+        $sql = "UPDATE website SET logo_text='$logo_text', gmail='$gmail', facebook='$facebook', youtube='$youtube', linkedin='$linkedin', f_text='$f_text' WHERE id=1";
     }else{
-        $sql = "UPDATE website SET logo='$file_name',logo_text='$logo_text', gmail='$gmail', linkedin='$linkedin', f_text='$f_text' WHERE id=1";
+        $sql = "UPDATE website SET logo='$file_name',logo_text='$logo_text', gmail='$gmail', facebook='$facebook', youtube='$youtube', linkedin='$linkedin', f_text='$f_text' WHERE id=1";
     }
     
   $query = mysqli_query($conn,$sql);
@@ -32,9 +31,6 @@ if(isset($_POST['save'])){
   }else{
     $msg = "Something is wrong!";
   }
-}
-if(isset($_GET['msg'])){
-    $msg = $_GET['msg'];
 }
 
 ?>
@@ -71,13 +67,24 @@ if(isset($_GET['msg'])){
                                 </div>
                                 <br>
                                 <div class="flex_inputs">
-                                <div class="input_area">
+                                    <div class="input_area">
                                         <label for="l_name">Gmail</label>
-                                        <input name="gmail" type="text" class="base_input" value="<?php echo $website['logo_text'];?>" />
+                                        <input name="gmail" type="text" class="base_input" value="<?php echo $website['gmail'];?>" />
+                                    </div>
+                                    <div class="input_area">
+                                        <label for="l_name">Facebook</label>
+                                        <input name="facebook" type="text" class="base_input" value="<?php echo $website['facebook'];?>" />
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="flex_inputs">
+                                    <div class="input_area">
+                                        <label for="l_name">Youtube</label>
+                                        <input name="youtube" type="text" class="base_input" value="<?php echo $website['youtube'];?>" />
                                     </div>
                                     <div class="input_area">
                                         <label for="l_name">Linkedin</label>
-                                        <input name="linkedin" type="text" class="base_input" value="<?php echo $website['logo_text'];?>" />
+                                        <input name="linkedin" type="text" class="base_input" value="<?php echo $website['linkedin'];?>" />
                                     </div>
                                 </div>
                                 <br>
@@ -99,3 +106,4 @@ if(isset($_GET['msg'])){
         </div>
 
         <?php include('common/footer.php');?>
+        <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>

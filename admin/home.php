@@ -4,12 +4,16 @@
 if(isset($_SESSION['admin_id'])){
   $id = $_SESSION['admin_id'];
 }
-
 if($id<1){
   header('location:index.php');
 }
-
-$disease = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM disease"));
+$appointment = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM appointment"));
+$users = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM admin_info WHERE role='User'"));
+$visitors = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM visitors"));
+$visitors = $visitors['visitor'];
+$service = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM service WHERE name !='index'"));
+$service_publish = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM service WHERE status='Publish' AND name !='index'"));
+$service_draft = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM service WHERE status='Draft' AND name !='index'"));
 ?>
   <main class="content_wrapper">
     <!--===== main page content =====-->
@@ -32,30 +36,30 @@ $disease = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM disease"));
                     <div class="box">
                       <div class="value_area">
                         <span class="value_area_icon">
-                        <i class="fa-solid fa-ticket"></i></span>
-                        <span class="value">aaaa</span>
+                        <i class="fa-solid fa-cubes-stacked"></i>
+                        <span class="value"><?php echo $service;?></span>
                       </div>
-                      <div class="title">Total Ticket</div>
+                      <div class="title">Total Service</div>
                     </div>
 
                     <div class="box">
                       <div class="value_area">
                         <span class="value_area_icon">
-                        <i class="fa-solid fa-ticket-simple"></i> 
+                        <i class="fa-solid fa-cubes-stacked"></i> 
                         </span>
-                        <span class="value">bbb</span>
+                        <span class="value"><?php echo $service_publish;?></span>
                       </div>
-                      <div class="title">Solved Tickets</div>
-                    </div>
+                      <div class="title">Published Service</div>
+                    </div>                    
 
                     <div class="box">
                       <div class="value_area">
                         <span class="value_area_icon">
                         <i class="fa-solid fa-cubes-stacked"></i>
                         </span>
-                        <span class="value">ccc</span>
+                        <span class="value"><?php echo $service_draft;?></span>
                       </div>
-                      <div class="title">Total disease</div>
+                      <div class="title">Draft Service</div>
                     </div>
 
                     <div class="box">
@@ -63,9 +67,9 @@ $disease = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM disease"));
                         <span class="value_area_icon">
                         <i class="fa-solid fa-people-group"></i>
                         </span>
-                        <span class="value">ddd</span>
+                        <span class="value"><?php echo $appointment;?></span>
                       </div>
-                      <div class="title">Total User</div>
+                      <div class="title">Total Appointment</div>
                     </div>
 
                     <div class="box">
@@ -73,9 +77,9 @@ $disease = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM disease"));
                         <span class="value_area_icon">
                         <i class="fa-solid fa-people-group"></i>
                         </span>
-                        <span class="value">eee</span>
+                        <span class="value"><?php echo $users;?></span>
                       </div>
-                      <div class="title">Pending verify</div>
+                      <div class="title">Total Users</div>
                     </div>
 
                     <div class="box">
@@ -83,10 +87,10 @@ $disease = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM disease"));
                         <span class="value_area_icon">
                         <i class="fa-solid fa-people-group"></i>
                         </span>
-                        <span class="value">fff</span>
+                        <span class="value"><?php echo $visitors;?></span>
                       </div>
-                      <div class="title">Success Verify</div>
-                    </div>
+                      <div class="title">Total visitors</div>
+                    </div>                    
 
                   </div>
                 </div>
@@ -97,6 +101,8 @@ $disease = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM disease"));
       </div>
 
       <?php include('common/footer.php');?>
+      <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>
+
 
 
 

@@ -8,10 +8,6 @@ if(isset($_GET['id'])){
  $user_id = $_GET['id'];
 }
 
-if(isset($_GET['msg'])){
-    $msg = $_GET['msg'];
-}
-
 if(isset($_POST['save'])){
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
@@ -60,10 +56,6 @@ if(isset($_POST['save'])){
                                             </span>
                                             <span class="text"> Profile </span>
                                         </h6>
-                                        <?php if(isset($msg)){ ?><div class="alert_info">
-                                          <?php if(isset($msg)){echo $msg;}?>
-                                          </div>
-                                        <?php }?>
                                     </div>
                             </div>
 
@@ -425,3 +417,4 @@ if(isset($_POST['save'])){
         </div>
 
         <?php include('common/footer.php');?>
+        <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>

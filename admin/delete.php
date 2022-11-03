@@ -5,8 +5,12 @@ if(isset($_GET['src'])){
 }
 $msg = "$src Has Been Deleted!";
 switch ($src) {
-    case "disease-all":
-      $query = mysqli_query($conn,"DELETE FROM disease WHERE id=$id");
+    case "service-all":
+      $query = mysqli_query($conn,"DELETE FROM service WHERE id=$id");
+      if($query){ header("location:$src.php?msg=$msg");}
+      break;
+    case "service-draft":
+      $query = mysqli_query($conn,"DELETE FROM service WHERE id=$id");
       if($query){ header("location:$src.php?msg=$msg");}
       break;
     case "appointment":

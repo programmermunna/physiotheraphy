@@ -5,9 +5,9 @@ if(isset($_GET['id'])){
 $id = $_GET['id'];
 }
 
-$row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM disease WHERE id=$id"));
+$row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM service WHERE id=$id"));
 
-if(isset($_POST['add_disease'])){
+if(isset($_POST['add_service'])){
     $name =$_POST['name'];
     $title =$_POST['title'];
     $content =$_POST['content'];
@@ -19,15 +19,15 @@ if(isset($_POST['add_disease'])){
     $file_tmp = $_FILES['file']['tmp_name'];
     move_uploaded_file($file_tmp,"../upload/$file_name");
 
-    $check = mysqli_query($conn,"SELECT * FROM disease WHERE url='$url'");
+    $check = mysqli_query($conn,"SELECT * FROM service WHERE url='$url'");
     if($check<1){
-    $msg = "Alrady Have disease. Please Insert Another";
-    header("location:disease.php?msg=$msg");
+    $msg = "Alrady Have service. Please Insert Another";
+    header("location:service.php?msg=$msg");
     }else{
-    $row = mysqli_query($conn,"INSERT INTO disease(name,title,url,file,status,content) VALUE('$name','$title','$url','$file_name','$status','$content')");
+    $row = mysqli_query($conn,"INSERT INTO service(name,title,url,file,status,content) VALUE('$name','$title','$url','$file_name','$status','$content')");
     if($row){
-    $msg = "Successfully Create a New disease";
-    header("location:disease.php?msg=$msg");
+    $msg = "Successfully Create a New service";
+    header("location:service.php?msg=$msg");
     }else{
     echo "Something error!";
     }
@@ -50,7 +50,7 @@ if(isset($_POST['add_disease'])){
                                     <div class="dc_box_container">
                                         <h6>
                                             <span class="icon"><i class="fa fa-user"></i></span>
-                                            <span class="text"> disease </span>
+                                            <span class="text"> service </span>
                                         </h6>
                                     </div>
                                 </div>
@@ -62,12 +62,12 @@ if(isset($_POST['add_disease'])){
                                     </div>
                                     <br />
                                     <div class="input_area">
-                                        <label for="current_p">Disease Name</label>
+                                        <label for="current_p">service Name</label>
                                         <input required name="name" type="text" class="base_input" />
                                     </div>
                                     <br />
                                     <div class="input_area">
-                                        <label for="current_p">Disease Title</label>
+                                        <label for="current_p">service Title</label>
                                         <input required name="title" type="text" class="base_input" />
                                     </div>
                                     <br />
@@ -84,7 +84,7 @@ if(isset($_POST['add_disease'])){
                                         </select>
                                     </div>
                                     <br />
-                                    <input name="add_disease" type="submit" class="base_btn" value="Post" />
+                                    <input name="add_service" type="submit" class="base_btn" value="Post" />
 
                                 </div>
                             </div>
@@ -113,3 +113,4 @@ if(isset($_POST['add_disease'])){
         </div>
 
         <?php include('common/footer.php');?>
+        <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>

@@ -4,10 +4,10 @@
 if(isset($_GET['id'])){
   $id = $_GET['id'];
 }
-$row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM disease WHERE id=$id"));
+$row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM service WHERE id=$id"));
 
 
-if(isset($_POST['add_disease'])){
+if(isset($_POST['add_service'])){
     $name =$_POST['name'];
     $title =$_POST['title'];
     $content =$_POST['content'];
@@ -20,18 +20,18 @@ if(isset($_POST['add_disease'])){
     move_uploaded_file($file_tmp,"../upload/$file_name");
 
     if(!empty($_FILES['file']['name'])){
-        $row = mysqli_query($conn,"UPDATE disease SET name='$name',title='$title',file='$file_name',url='$url',status='$status',content='$content' WHERE id=$id");
+        $row = mysqli_query($conn,"UPDATE service SET name='$name',title='$title',file='$file_name',url='$url',status='$status',content='$content' WHERE id=$id");
     }else{
-        $row = mysqli_query($conn,"UPDATE disease SET name='$name',title='$title',url='$url',status='$status',content='$content' WHERE id=$id");
+        $row = mysqli_query($conn,"UPDATE service SET name='$name',title='$title',url='$url',status='$status',content='$content' WHERE id=$id");
     }
 
     if($row){
-    $msg = "Successfully Create a New disease";
-    header("location:disease-edit.php?id=$id&&msg=$msg");
+    $msg = "Successfully Create a New service";
+    header("location:service-edit.php?id=$id&&msg=$msg");
     }else{
     echo "Something error!";
     }    
-    }
+}
 ?>
 <main class="content_wrapper">
     <!--===== main page content =====-->
@@ -50,7 +50,7 @@ if(isset($_POST['add_disease'])){
                                             <span class="icon">
                                                 <i class="fa fa-user"></i>
                                             </span>
-                                            <span class="text"> disease </span>
+                                            <span class="text"> service </span>
                                         </h6>
                                         <?php if(isset($msg)){ ?><div class="alert_info">
                                             <?php if(isset($msg)){echo $msg;}?>
@@ -66,12 +66,12 @@ if(isset($_POST['add_disease'])){
                                     </div>
                                     <br />
                                     <div class="input_area">
-                                        <label for="current_p">Disease Name</label>
+                                        <label for="current_p">service Name</label>
                                         <input required name="name" type="text" class="base_input" value="<?php echo $row['name']?>" />
                                     </div>
                                     <br />
                                     <div class="input_area">
-                                        <label for="current_p">Disease Title</label>
+                                        <label for="current_p">service Title</label>
                                         <input required name="title" type="text" class="base_input" value="<?php echo $row['title']?>" />
                                     </div>
                                     <br />
@@ -95,7 +95,7 @@ if(isset($_POST['add_disease'])){
                                     </div>
                                     <br />
                                     
-                                    <input name="add_disease" type="submit" class="base_btn" value="Save" />
+                                    <input name="add_service" type="submit" class="base_btn" value="Save" />
                                 </div>
                             </div>
                         </form>
@@ -125,3 +125,4 @@ if(isset($_POST['add_disease'])){
         </div>
 
         <?php include('common/footer.php');?>
+        <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>

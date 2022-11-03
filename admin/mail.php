@@ -4,9 +4,6 @@
 if(isset($_SESSION['admin_id'])){
   $id = $_SESSION['admin_id'];
 }
-if(isset($_GET['msg'])){
-    $msg = $_GET['msg'];
-  }
 $mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail WHERE id=1"));
 
 if(isset($_POST['save'])){
@@ -48,10 +45,6 @@ if(isset($_POST['save'])){
                                             </span>
                                             <span class="text"> Mail setting </span>
                                         </h6>
-                                        <?php if(isset($msg)){ ?><div class="alert_info">
-                                            <?php if(isset($msg)){echo $msg;}?>
-                                        </div>
-                                        <?php }?>
 
                                     </div>
                             </div>
@@ -113,3 +106,4 @@ if(isset($_POST['save'])){
         </div>
 
         <?php include('common/footer.php');?>
+        <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>

@@ -16,3 +16,23 @@
     display: inline-block;
     font-size: 20px;
 }
+
+.slicknav_menu {
+	display:none;
+}
+
+@media screen and (max-width: 678px) {
+	#menu {
+		display:none;
+	}
+	
+	.slicknav_menu {
+		display:block;
+	}
+}
+
+@media screen and (max-width: 678px) {
+	.main_footer{
+        margin: 0 auto;
+    }
+}

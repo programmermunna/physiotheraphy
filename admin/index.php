@@ -158,5 +158,5 @@ if(isset($_POST['login'])){
 
   <script src="js/main.js"></script>
 </body>
-
 </html>
+<?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>

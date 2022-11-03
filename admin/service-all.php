@@ -5,19 +5,19 @@ if(isset($_GET['id'])){
   $id = $_GET['id'];
 }
 
-if(isset($_POST['add_disease'])){
-  $disease =$_POST['disease'];
-  $url = strtolower($disease).".php";
+if(isset($_POST['add_service'])){
+  $service =$_POST['service'];
+  $url = strtolower($service).".php";
   $content =$_POST['content'];
-      $check = mysqli_query($conn,"SELECT * FROM disease WHERE content='$content'");
+      $check = mysqli_query($conn,"SELECT * FROM service WHERE content='$content'");
       if($check<1){
-        $msg = "Alrady Have disease. Please Insert Another";
-        header("location:disease.php?msg=$msg");
+        $msg = "Alrady Have service. Please Insert Another";
+        header("location:service.php?msg=$msg");
       }else{
-      $row = mysqli_query($conn,"INSERT INTO disease(disease,url,content) VALUE('$disease','$url','$content')");
+      $row = mysqli_query($conn,"INSERT INTO service(service,url,content) VALUE('$service','$url','$content')");
       if($row){
-        $msg = "Successfully Create a New disease";
-        header("location:disease.php?msg=$msg");
+        $msg = "Successfully Create a New service";
+        header("location:service.php?msg=$msg");
       }else{
         echo "Something error!";
       }
@@ -41,9 +41,9 @@ if(isset($_POST['add_disease'])){
                                         <span class="icon">
                                             <i class="fa fa-user"></i>
                                         </span>
-                                        <span class="text">All disease </span>
+                                        <span class="text">All service </span>
                                     </h6>
-                                    <a href="disease.php">Add disease</a>
+                                    <a href="service.php">Add service</a>
                                 </div>
                             </div>
 
@@ -67,24 +67,29 @@ if(isset($_POST['add_disease'])){
                                                 $currentPage = 1;
                                             }
                                             $startFrom = ($currentPage * $showRecordPerPage) - $showRecordPerPage;
-                                            $totalEmpSQL = "SELECT * FROM disease WHERE status='Publish' ORDER BY id DESC";
+                                            $totalEmpSQL = "SELECT * FROM service WHERE status='Publish' ORDER BY id DESC";
                                             $allEmpResult = mysqli_query($conn, $totalEmpSQL);
                                             $totalEmployee = mysqli_num_rows($allEmpResult);
                                             $lastPage = ceil($totalEmployee/$showRecordPerPage);
                                             $firstPage = 1;
                                             $nextPage = $currentPage + 1;
                                             $previousPage = $currentPage - 1;
-                                            $empSQL = "SELECT * FROM disease WHERE status='Publish' ORDER BY id DESC LIMIT $startFrom, $showRecordPerPage";
+                                            $empSQL = "SELECT * FROM service WHERE status='Publish' ORDER BY id DESC LIMIT $startFrom, $showRecordPerPage";
                                             $query = mysqli_query($conn, $empSQL);
                                             $i = 0;
                                             while($row = mysqli_fetch_assoc($query)){ $i++;?>
                                             <tr>
                                                 <td><?php echo $i;?></td>
+                                                <?php
+                                                if(empty($row['file'])){ ?>
+                                                <td style="padding-left:40px;padding-top:15px;">NO IMAGES</td>
+                                             <?php }else{ ?>
                                                 <td><img style="width:150px;height:50px;" src="../upload/<?php echo $row['file'];?>"></td>
+                                              <?php  }?>
                                                 <td><?php echo $row['title'];?></td>
                                                 <td>
-                                                     <a class="btn btn-success" href="disease-edit.php?id=<?php echo $row['id'];?>">Edit</a>
-                                                     <a class="btn btn-danger" href="delete.php?src=disease-all&&id=<?php echo $row['id'];?>">Delete</a>
+                                                     <a class="btn btn-success" href="service-edit.php?id=<?php echo $row['id'];?>">Edit</a>
+                                                     <a class="btn btn-danger" href="delete.php?src=service-all&&id=<?php echo $row['id'];?>">Delete</a>
                                                      <a target="_blank" class="btn btn-success" href="../index.php?page=<?php echo $row['url'];?>">View</a>
                                                     
                                                 </td>
@@ -157,3 +162,4 @@ if(isset($_POST['add_disease'])){
         </div>
 
         <?php include('common/footer.php');?>
+        <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>

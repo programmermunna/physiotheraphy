@@ -4,9 +4,6 @@
 if(isset($_SESSION['admin_id'])){
   $id = $_SESSION['admin_id'];
 }
-if(isset($_GET['msg'])){
-    $msg = $_GET['msg'];
-}
 
 if(isset($_POST['save'])){
   $name = $_POST['name'];
@@ -116,3 +113,4 @@ if(isset($_POST['save'])){
         </div>
 
         <?php include('common/footer.php');?>
+        <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>
