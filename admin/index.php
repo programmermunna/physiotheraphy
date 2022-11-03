@@ -16,9 +16,9 @@ if(isset($_COOKIE['admin_id'])){
 }
 
 if(isset($_POST['login'])){
-  $phone =$_POST['phone'];
+  $email =$_POST['email'];
   $pass = md5($_POST['pass']); 
-  $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_info WHERE phone='$phone' AND pass='$pass'"));
+  $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_info WHERE email='$email' AND pass='$pass'"));
   if($row>0){
       $id = $row['id'];
       $_SESSION['admin_id'] = $id;
@@ -117,40 +117,8 @@ if(isset($_POST['login'])){
       </div>
       <input type="submit" name="login" class="base_btn" value="Login" />
     </form>
-  </div>  
-
-
+  </div>
       </div>
-
-      <footer class="main_footer">
-        <div class="footer_container">
-          <div class="footer_left">
-            ©Jobless Inc.. 2019 All rights reserved.
-          </div>
-          <ul class="footer_right">
-            <li>
-              <a href="#" style="color: blueviolet">
-                <i class="fab fa-facebook"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#" style="color: blueviolet">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#" style="color: red">
-                <i class="fab fa-youtube"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#" style="color: blueviolet">
-                <i class="fab fa-linkedin"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </footer>
     </div>
     <!--===== main page content =====-->
   </main>
@@ -169,7 +137,7 @@ if(isset($_POST['login'])){
               <i class="fa-solid fa-phone"></i>
             </span>
           </div>
-          <input name="phone" type="text" placeholder="Number" id="number" required />
+          <input name="email" type="email" placeholder="Email" required />
         </div>
       </div>
 

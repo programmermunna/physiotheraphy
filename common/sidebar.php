@@ -11,10 +11,8 @@
             <?php
             $disease = mysqli_query($conn, "SELECT * FROM disease WHERE status='Publish'");
             while ($row = mysqli_fetch_assoc($disease)) { ?>
-            <li><a href="index.php?page=<?php echo $row['url'] ?>"><i class="fa fa-user"></i>
-                    <span><?php echo $row['disease'] ?></span></a></li>
+            <li><a href="index.php?page=<?php echo $row['url'] ?>"><i class="fa fa-user"></i><span><?php echo str_replace('-', ' ', strtolower($row['name']));?></span></a></li>
             <?php } ?>
-
         </ul>
     </div>
 

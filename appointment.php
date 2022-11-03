@@ -1,11 +1,8 @@
 <?php include('common/header.php');?>
 <?php 
-
-if(isset($_SESSION['admin_id'])){
-  $id = $_SESSION['admin_id'];
-}
-if(isset($_GET['msg'])){
-    $msg = $_GET['msg'];
+if($id<1){
+    $msg = "Please Login First!";
+    header("location:login.php?msg=$msg");
 }
 
 if(isset($_POST['save'])){
@@ -28,7 +25,6 @@ if(isset($_POST['save'])){
     header("location:appointment.php?msg=$msg");
   }
 }
-
 
 ?>
 <main class="content_wrapper">

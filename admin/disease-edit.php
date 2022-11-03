@@ -80,7 +80,7 @@ if(isset($_POST['add_disease'])){
                                         <label for="new_p">Edit Content</label>
                                         <textarea class="textarea" name="content" id="summernote"><?php echo $row['content']?></textarea>
                                     </div>
-
+                                    <br>
                                     <div class="input_area">
                                         <label for="new_p">Edit Content</label>
                                         <select class="base_input" name="status">

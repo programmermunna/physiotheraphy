@@ -50,15 +50,14 @@ if(isset($_POST['submit'])){
 
                                     <div class="input_area">
                                         <label for="new_p">Message</label>
-                                        <input required name="message" type="text" class="base_input" />
+                                        <textarea name="message" class="textarea"></textarea>
                                     </div>
                                     <br />
                                     <input name="submit" type="submit" class="base_btn" value="Save" />
-
                                 </div>
                             </div>
                         </form>
-                        <!-- ---------------------display box----------------- -->
+                        
                         <div class="dc_box">
                             <div class="dc_box_header">
                                 <div class="dc_box_container">

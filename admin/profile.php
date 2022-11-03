@@ -10,7 +10,7 @@ if(isset($_GET['msg'])){
 
 if(isset($_POST['save'])){
   $name = $_POST['name'];
-  $phone = $_POST['phone'];
+  $email = $_POST['email'];
   $logo_text = $_POST['logo_text'];
   $time = time();
 
@@ -18,7 +18,12 @@ if(isset($_POST['save'])){
   $file_tmp = $_FILES['file']['tmp_name'];
   move_uploaded_file($file_tmp,"../upload/$file_name");
 
-  $sql = "UPDATE admin_info SET logo_text='$logo_text',name='$name',phone='$phone',img='$file_name',time=$time WHERE id=$id";
+  if(empty($file_name)){
+      $sql = "UPDATE admin_info SET logo_text='$logo_text',name='$name',email='$email',time=$time WHERE id=$id";
+  }else{
+      $sql = "UPDATE admin_info SET logo_text='$logo_text',name='$name',email='$email',img='$file_name',time=$time WHERE id=$id";
+  }
+
   $query = mysqli_query($conn,$sql);
   if($query){
     $msg = "Successfully Updated your Profile";
@@ -48,11 +53,6 @@ if(isset($_POST['save'])){
                                             </span>
                                             <span class="text"> Admin Setting </span>
                                         </h6>
-                                        <?php if(isset($msg)){ ?><div class="alert_info">
-                                          <?php if(isset($msg)){echo $msg;}?>
-                                          </div>
-                                        <?php }?>
-
                                     </div>
                             </div>
 
@@ -85,15 +85,14 @@ if(isset($_POST['save'])){
                                 </div>
                                 <br />
                                 <div>
-                                    <label for="twitter_p"> Phone</label>
+                                    <label for="twitter_p"> Email</label>
                                     <div class="base_input_icon">
                                         <div class="icon">
                                             <span>
-                                            <i class="fa-solid fa-phone"></i>
+                                            <i class="fa-solid fa-envelope"></i>
                                             </span>
                                         </div>
-                                        <input name="phone" type="text" value="<?php echo $show['phone'];?>"
-                                            id="twitter_p" />
+                                        <input name="email" type="text" value="<?php echo $show['email'];?>" id="twitter_p" />
                                     </div>
                                 </div>
                                 <br />
@@ -101,15 +100,12 @@ if(isset($_POST['save'])){
                                     <label for="twitter_p">Photo</label>
                                     <div class="base_input_icon">
                                         <div class="icon">
-                                            <span>
-                                            <i class="fa-solid fa-user"></i>
-                                            </span>
-                                        </div>
-                                        <input style="padding-top:10px;" name="file" type="file" required />
+                                            <span><i class="fa-solid fa-user"></i></span></div>
+                                        <input style="padding-top:10px;" name="file" type="file" />
                                     </div>
                                 </div>
                                 <br />
-                                <input onclick="alert('Are you sure?')" name="save" type="submit" class="base_btn"
+                                <input name="save" type="submit" class="base_btn"
                                     value="Save" />
                             </div>
                             </form>

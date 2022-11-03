@@ -42,6 +42,7 @@
     <!--===== main page content =====-->
   </main>
   <script src="js/jquery.min.js"></script>
+  <script src="lib/slicknav/slicknav.js"></script>
   <script src="js/main.js"></script>
 
 </body>

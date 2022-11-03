@@ -52,13 +52,6 @@ if(isset($_POST['change_pass'])){
                         </span>
                         <span class="text"> Change Password </span>
                       </h6>
-
-
-                      <?php if(isset($msg)){ ?><div class="alert_info">
-                      <?php if(isset($msg)){echo $msg;}?>
-                      </div>
-                    <?php }?>
-
                     </div>
                   </div>
 

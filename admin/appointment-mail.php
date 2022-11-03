@@ -58,31 +58,28 @@ header("location:pending-status.php?msg=$msg");
                             </div>
 
                             <div class="dc_box_container">
-                                <div class="input_area">
-                                    <label for="current_p">Subject</label>
-                                    <input name="subject" type="text" class="base_input" />
-                                </div>
-                                <br>
-                                <div class="input_area"> 
-                                    <label for="current_p">Message</label>
-                                    <textarea class="textarea"></textarea>
-                                </div>
-                                <br>
-                                <h5>OR</h5>
-                                <br>
                                 <div>
                                     <label for="twitter_p"> Select Text</label>
                                     <div class="base_input_icon">
-                                        <select class="base_input" name="select">
+                                        <select id="select_sub" class="base_input" name="select">
                                             <option selected value="">Select Ready Message</option>      
                                         <?php 
                                             while($data = mysqli_fetch_assoc($ready_mail)){ ?>
                                             <option value="<?php echo $data['subject']?>"><?php echo $data['subject']?></option>
-                                        <?php }?>
-                                            
+                                        <?php }?>                                            
                                         </select>
                                     </div>
                                 </div>
+                                <h5>OR</h5>
+                                <div class="input_area">
+                                    <label for="current_p">Subject</label>
+                                    <input name="subject" type="text" id="subject" class="base_input" />
+                                </div>
+                                <br>
+                                <div class="input_area"> 
+                                    <label for="current_p">Message</label>
+                                    <textarea class="textarea" id="message"></textarea>
+                                </div>                                
                                 <br><br>
                                 <input name="submit" type="submit" class="base_btn"
                                     value="Send" />
@@ -93,5 +90,15 @@ header("location:pending-status.php?msg=$msg");
                 </div>
             </div>
         </div>
+
+        <script>
+            const select = document.querySelector("#select_sub");
+            const subject = document.querySelector("#subject");
+            const message = document.querySelector("#message");
+
+            select.addEventListener("change",()=>{
+            subject.value=select.value;
+            });
+        </script>
 
         <?php include('common/footer.php');?>

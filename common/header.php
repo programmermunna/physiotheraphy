@@ -46,6 +46,7 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website WHERE id
   <script src="https://kit.fontawesome.com/6788eb3be6.js" crossorigin="anonymous"></script>
 
   <!-- BEGIN CSS STYLES -->
+  <link rel="stylesheet" href="lib/slicknav/slicknav.css" type="text/css" media="all" />
   <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
   <link rel="stylesheet" href="css/custom.css" type="text/css" media="all" />
   <!-- END CSS STYLES -->
@@ -57,12 +58,16 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website WHERE id
     <div class="container">
       <div class="header_left">
         <a href="index.php" class="logo">
-          <img src="upload/<?php echo $website['logo'];?>" alt="" />
+          <?php 
+          if(!empty($website['logo'])){ ?>
+          <img style="width:200px;height:120px" src="upload/<?php echo $website['logo'];?>" />
+        <?php }else{?>
           <span style="text-decoration:none; min-width: fit-content;width:600px;"><?php echo $website['logo_text'];?></span>
+          <?php }?>
         </a>
       </div>
 
-      <ul class="header_right">
+      <ul id="menu" class="header_right">
         <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="profile.php" class="rubik">Trams&Condition</a></li>
         <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="contact.php" class="rubik">Contract</a></li>
         <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="appointment.php" class="rubik">Appointment</a></li>
@@ -78,3 +83,9 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website WHERE id
       </ul>
     </div>
   </header>
+
+  <script>
+    $(document).ready(function(){
+        $('#menu').clicknav();
+    })
+</script>

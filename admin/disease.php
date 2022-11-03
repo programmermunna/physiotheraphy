@@ -12,8 +12,8 @@ if(isset($_POST['add_disease'])){
     $title =$_POST['title'];
     $content =$_POST['content'];
     $status =$_POST['status'];
-    
-    $url = strtolower($name).".php";
+
+    $url = str_replace(' ', '-', strtolower($name)).".php"; 
     
     $file_name = $_FILES['file']['name'];
     $file_tmp = $_FILES['file']['tmp_name'];
