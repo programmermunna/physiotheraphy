@@ -61,7 +61,7 @@ if(isset($_POST['save'])){
                                     <label for="twitter_p"> Phone</label>
                                     <div class="base_input_icon">
                                         <div class="icon"><span><i class="fa-solid fa-phone"></i></span></div>
-                                        <input required name="phone" type="text" placeholder="Ex: 017......" />
+                                        <input required name="phone" type="text" placeholder="Ex: 01......" />
                                     </div>
                                 </div>
                                 <br />
@@ -79,7 +79,7 @@ if(isset($_POST['save'])){
                                     <label for="twitter_p"> Address</label>
                                     <div class="base_input_icon">
                                         <div class="icon"><span><i class="fa-solid fa-location-dot"></i></span></div>
-                                        <input required name="address" type="text" placeholder="Road#46, House#34, Gulshan-2, Dhaka-1212, Bangladesh" />
+                                        <input required name="address" type="text" placeholder="Ex: Road#46, House#34, Gulshan-2, Dhaka-1212, Bangladesh" />
                                     </div>
                                 </div>
                                 <br />

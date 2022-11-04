@@ -4,8 +4,14 @@
           <?php echo $website['f_text'];?>
           </div>
           <ul class="footer_right">
-          <li>
-              <a href="<?php echo $website['gmail'];?>" style="color: #0072ffc9">
+            
+            <li>
+              <a href="tel:<?php echo $website['phone'];?>" style="color: #0072ffc9">
+              <i class="fa-solid fa-square-phone"></i>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:<?php echo $website['gmail'];?>" style="color: #0072ffc9">
               <i class="fa-solid fa-square-envelope"></i>
               </a>
             </li>
@@ -26,7 +32,6 @@
                 <i class="fab fa-linkedin"></i>
               </a>
             </li>
-
           </ul>
         </div>
       </footer>

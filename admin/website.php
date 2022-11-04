@@ -9,6 +9,8 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website WHERE id
 if(isset($_POST['save'])){
     $title = $_POST['title'];
     $logo_text = $_POST['logo_text'];
+    $phone = $_POST['phone'];
+    $whatsapp = $_POST['whatsapp'];
     $gmail = $_POST['gmail'];
     $facebook = $_POST['facebook'];
     $youtube = $_POST['youtube'];
@@ -25,13 +27,13 @@ if(isset($_POST['save'])){
     move_uploaded_file($favicon_tmp,"../upload/$favicon_name");
 
     if(empty($file_name)){
-        $sql = "UPDATE website SET favicon='$favicon_name',title='$title',logo_text='$logo_text', gmail='$gmail', facebook='$facebook', youtube='$youtube', linkedin='$linkedin', f_text='$f_text',chatbox='$chatbox' WHERE id=1";
+        $sql = "UPDATE website SET favicon='$favicon_name',title='$title',logo_text='$logo_text', phone='$phone', whatsapp='$whatsapp', gmail='$gmail', facebook='$facebook', youtube='$youtube', linkedin='$linkedin', f_text='$f_text',chatbox='$chatbox' WHERE id=1";
     }elseif(empty($favicon_name)){
-        $sql = "UPDATE website SET logo='$file_name',title='$title',logo_text='$logo_text', gmail='$gmail', facebook='$facebook', youtube='$youtube', linkedin='$linkedin', f_text='$f_text',chatbox='$chatbox' WHERE id=1";
+        $sql = "UPDATE website SET logo='$file_name',title='$title',logo_text='$logo_text', phone='$phone', whatsapp='$whatsapp', gmail='$gmail', facebook='$facebook', youtube='$youtube', linkedin='$linkedin', f_text='$f_text',chatbox='$chatbox' WHERE id=1";
     }elseif(empty($favicon_name) || empty($file_name)){
-        $sql = "UPDATE website SET title='$title',logo_text='$logo_text', gmail='$gmail', facebook='$facebook', youtube='$youtube', linkedin='$linkedin', f_text='$f_text',chatbox='$chatbox' WHERE id=1";
+        $sql = "UPDATE website SET title='$title',logo_text='$logo_text', phone='$phone', whatsapp='$whatsapp', gmail='$gmail', facebook='$facebook', youtube='$youtube', linkedin='$linkedin', f_text='$f_text',chatbox='$chatbox' WHERE id=1";
     }else{
-        $sql = "UPDATE website SET favicon='$favicon_name',title='$title',logo='$file_name',logo_text='$logo_text', gmail='$gmail', facebook='$facebook', youtube='$youtube', linkedin='$linkedin', f_text='$f_text',chatbox='$chatbox' WHERE id=1";
+        $sql = "UPDATE website SET favicon='$favicon_name',title='$title',logo='$file_name',logo_text='$logo_text', phone='$phone', whatsapp='$whatsapp', gmail='$gmail', facebook='$facebook', youtube='$youtube', linkedin='$linkedin', f_text='$f_text',chatbox='$chatbox' WHERE id=1";
     }
     
   $query = mysqli_query($conn,$sql);
@@ -95,6 +97,17 @@ if(isset($_POST['save'])){
                                         </h6>
                                     </div>
                                     <hr>
+                                <div class="flex_inputs">
+                                    <div class="input_area">
+                                        <label>Phone</label>
+                                        <input name="phone" type="text" class="base_input" value="<?php echo $website['phone'];?>" />
+                                    </div>
+                                    <div class="input_area">
+                                        <label>Whatsapp</label>
+                                        <input name="whatsapp" type="text" class="base_input" value="<?php echo $website['whatsapp'];?>" />
+                                    </div>
+                                </div>
+                                <br>
                                 <div class="flex_inputs">
                                     <div class="input_area">
                                         <label>Gmail</label>

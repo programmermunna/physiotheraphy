@@ -25,7 +25,7 @@
                                 </div>
                                 <div style="text-align:center;padding:20px 0">
                                     <a style="margin:0 10px;font-size:20px" class="btn btn-success" href="appointment.php">Appoint Now</a>
-                                    <a style="margin:0 10px;font-size:20px" class="btn btn-success" href="tel:01784489515">Call Now</a>
+                                    <a style="margin:0 10px;font-size:20px" class="btn btn-success" href="tel:<?php echo $website['phone']?>">Call Now</a>
                                 </div>
                                 <?php }?>                                
                             </div>
