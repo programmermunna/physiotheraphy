@@ -91,7 +91,7 @@ if(isset($_POST['submit'])){
                                     <div class="base_input_icon">
                                         <div class="icon"><span><i class="fa-regular fa-calendar"></i></span></div>
                                         <input name="date" type="date" value="<?php echo $data['date']?>" />
-                                    </div>
+                                    </div>  
                                 </div>
                                 <br />
 
@@ -116,10 +116,11 @@ if(isset($_POST['submit'])){
                             </form>                     
                             <?php include("appointment-mail.php");?>
                         </div>
-                    </div>
+                    </div>g
                 </div>
             </div>
         </div>
 </main>
         <?php include('common/footer.php');?>
         <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>
+
