@@ -4,30 +4,26 @@
 if(isset($_GET['id'])){
   $id = $_GET['id'];
 }
-$row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM service WHERE id=$id"));
+$row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM page WHERE id=$id"));
 
 
-if(isset($_POST['add_service'])){
-    $name =$_POST['name'];
+if(isset($_POST['add_page'])){
     $title =$_POST['title'];
     $content =$_POST['content'];
-    $status =$_POST['status'];
-    
-    $url = strtolower($name).".php";
 
     $file_name = $_FILES['file']['name'];
     $file_tmp = $_FILES['file']['tmp_name'];
     move_uploaded_file($file_tmp,"../upload/$file_name");
 
     if(!empty($_FILES['file']['name'])){
-        $row = mysqli_query($conn,"UPDATE service SET name='$name',title='$title',file='$file_name',url='$url',status='$status',content='$content' WHERE id=$id");
+        $row = mysqli_query($conn,"UPDATE page SET title='$title',img='$file_name',content='$content' WHERE id=$id");
     }else{
-        $row = mysqli_query($conn,"UPDATE service SET name='$name',title='$title',url='$url',status='$status',content='$content' WHERE id=$id");
+        $row = mysqli_query($conn,"UPDATE page SET title='$title',content='$content' WHERE id=$id");
     }
 
     if($row){
-    $msg = "Successfully Create a New service";
-    header("location:service-edit.php?id=$id&&msg=$msg");
+    $msg = "Successfully Create a New page";
+    header("location:page-edit.php?id=$id&&msg=$msg");
     }else{
     echo "Something error!";
     }    
@@ -45,25 +41,25 @@ if(isset($_POST['add_service'])){
                             <div class="dc_box_header">
                                 <div class="dc_box_container">
                                     <h6>
-                                        <span class="text">Edit Service </span>
+                                        <span class="text">Edit Page </span>
                                     </h6>
                                 </div>
                             </div>
                             
-                            <form action="" method="POST" enctype="multipart/form-data">
-                                <div class="dc_box_container">
+                            <div class="dc_box_container">
+                                    <form action="" method="POST" enctype="multipart/form-data">
                                     <div class="input_area">
-                                        <label for="current_p">Thumbnail</label>
+                                        <label for="current_p">Feather Image</label>
                                         <input style="padding-top:10px;" name="file" type="file" class="base_input" />
                                     </div>
                                     <br />
                                     <div class="input_area">
-                                        <label for="current_p">service Name</label>
-                                        <input required name="name" type="text" class="base_input" value="<?php echo $row['name']?>" />
+                                        <label for="current_p">Page Name</label>
+                                        <input disabled name="name" type="text" class="base_input" value="<?php echo $row['name']?>" />
                                     </div>
                                     <br />
                                     <div class="input_area">
-                                        <label for="current_p">service Title</label>
+                                        <label for="current_p">Page Title</label>
                                         <input name="title" type="text" class="base_input" value="<?php echo $row['title']?>" />
                                     </div>
                                     <br />
@@ -73,34 +69,21 @@ if(isset($_POST['add_service'])){
                                         <textarea class="textarea" name="content" id="summernote"><?php echo $row['content']?></textarea>
                                     </div>
                                     <br>
-                                    <div class="input_area">
-                                        <label for="new_p">Edit Content</label>
-                                        <select class="base_input" name="status">
-                                        <?php if($row['status']=='Draft'){?>
-                                            <option selected value="Draft">Draft</option>
-                                            <option value="Publish">Publish</option>
-                                        <?php }else{?>
-                                            <option value="Draft">Draft</option>
-                                            <option selected value="Publish">Publish</option>
-                                        <?php }?>
-                                        </select>
-                                    </div>
-                                    <br />                                    
-                                    <input name="add_service" type="submit" class="base_btn" value="Save" />
+                                    
+                                    <input name="add_page" type="submit" class="base_btn" value="Save" />
                                 </form>
-                                <br>
                                 <br>
                                 <?php
                                 if(isset($_POST['remove_image'])){
-                                    $remove = mysqli_query($conn,"UPDATE service SET file='' WHERE id=$id");
+                                    $remove = mysqli_query($conn,"UPDATE page SET img='' WHERE id=$id");
                                     if($remove){
                                         $msg = "Features Image Removed Successfully";
-                                        header("location:service-edit.php?id=$id&&msg=$msg");
+                                        header("location:page-edit.php?id=$id&&msg=$msg");
                                     }
                                 }
                                 ?>
-                                <form  action="" method="POST">
-                                    <div><img style="width:50%" src="../upload/<?php echo $row['file']?>"></div>                                    
+                                <form action="" method="POST">
+                                    <div><img style="width:50%" src="../upload/<?php echo $row['img']?>"></div>                                    
                                     <br>
                                     <br>
                                     <label for="current_p">Remove Features Image</label>

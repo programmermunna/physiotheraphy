@@ -1,16 +1,4 @@
 <?php include('common/header.php');?>
-
-
-<?php
-
-$ip = $_SERVER['REMOTE_ADDR'];
-$check = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM visitors WHERE visitor='$ip'"));
-if($check<1){
-    $visitors = mysqli_query($conn,"INSERT INTO visitors(visitor) VALUE('$ip')");
-}
-// $visitors = mysqli_query($conn,"UPDATE visitors SET visitor=visitor+1 WHERE id=1;");
-
-?>
 <main class="content_wrapper">
     <!--===== main page content =====-->
     <div class="content">
@@ -21,13 +9,16 @@ if($check<1){
 
                     <div class="dashboard_content">
                         <?php
-                          $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM page WHERE id=1")); ?>
+                          if(isset($_GET['page'])){
+                            $page = $_GET['page'];
+                          }
+                          $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM service WHERE url ='$page'")); ?>
                           <div class="dc_box">
                             <div class="dc_box_header">
                                 <?php 
-                                if(empty($row['img'])){}else{?>
+                                if(empty($row['file'])){}else{?>
                                 <div class="dc_box_container" style="padding:0;">
-                                    <img style="width:100%;height:300px;" src="upload/<?php echo $row['img'];?>">
+                                    <img style="width:100%;height:300px;" src="upload/<?php echo $row['file'];?>">
                                 </div>
                                 <div style="text-align:center;padding:40px 0;background:#93d5fbba;">
                                     <h6 style="display:inline-block;">If You Want To Appointmen</h6>

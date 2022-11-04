@@ -30,11 +30,7 @@ if(isset($_POST['submit'])){
                                 <div class="dc_box_header">
                                     <div class="dc_box_container">
                                         <h6>
-
-                                            <span class="icon">
-                                                <i class="fa fa-user"></i>
-                                            </span>
-                                            <span class="text">Add Mail Content </span>
+                                            <span class="text">Mail Content </span>
                                         </h6>                                        
                                     </div>
                                 </div>

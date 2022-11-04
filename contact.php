@@ -1,10 +1,5 @@
 <?php include('common/header.php');?>
 <?php 
-
-if(isset($_SESSION['admin_id'])){
-  $id = $_SESSION['admin_id'];
-}
-
 $mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail WHERE id=1"));
 if(isset($_POST['submit'])){
   $name = $_POST['name'];

@@ -1566,7 +1566,7 @@ footer.main_footer .footer_container .footer_right {
 }
 .dashboard_layout .dashboard_sidebar {
   padding: 24px;
-  border-radius: 2px;
+  border-radius: 4px;
   background: #0072ffc9;
   box-shadow: 0px 1px 5px 0px #eee;
   width: 25%;
@@ -1619,14 +1619,14 @@ footer.main_footer .footer_container .footer_right {
   color: #000;
 }
 .dashboard_layout .dashboard_content {
-  width: 70%;
+  width: 75%;
 }
 .dashboard_layout .dashboard_content .dc_box {
   width: 100%;
   background: #fff;
   box-shadow: 0px 1px 5px 0px #eee;
-  border-radius: 2px;
   margin-bottom: 24px;
+  border-radius: 4px;
 }
 .dashboard_layout .dashboard_content .dc_box .dc_box_header {
   border-bottom: 1.3px solid #dddddd50;

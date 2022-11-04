@@ -1,16 +1,5 @@
 <?php include('common/header.php');?>
-
-
-<?php
-
-$ip = $_SERVER['REMOTE_ADDR'];
-$check = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM visitors WHERE visitor='$ip'"));
-if($check<1){
-    $visitors = mysqli_query($conn,"INSERT INTO visitors(visitor) VALUE('$ip')");
-}
-// $visitors = mysqli_query($conn,"UPDATE visitors SET visitor=visitor+1 WHERE id=1;");
-
-?>
+<?php $visitors = mysqli_query($conn,"UPDATE visitors SET visitor=visitor+1 WHERE id=1;"); ?>
 <main class="content_wrapper">
     <!--===== main page content =====-->
     <div class="content">
@@ -21,7 +10,7 @@ if($check<1){
 
                     <div class="dashboard_content">
                         <?php
-                          $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM page WHERE id=1")); ?>
+                          $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM page WHERE id=2")); ?>
                           <div class="dc_box">
                             <div class="dc_box_header">
                                 <?php 

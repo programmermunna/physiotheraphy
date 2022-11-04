@@ -37,13 +37,9 @@ if(isset($_POST['add_service'])){
                             <div class="dc_box_header">
                                 <div class="dc_box_container">
                                     <h6>
-
-                                        <span class="icon">
-                                            <i class="fa fa-user"></i>
-                                        </span>
-                                        <span class="text">All service </span>
+                                        <span class="text">All Services </span>
                                     </h6>
-                                    <a href="service.php">Add service</a>
+                                    <a href="service.php">Add Service</a>
                                 </div>
                             </div>
 

@@ -11,6 +11,12 @@
                     </a>
                   </li>                                  
                   <li>
+                    <a href="page-all.php">
+                    <i class="fa-solid fa-map"></i>
+                      <span>Page All</span>
+                    </a>
+                  </li>                                   
+                  <li>
                     <a href="service-all.php">
                     <i class="fa-solid fa-map"></i>
                       <span>Service All</span>

@@ -52,10 +52,7 @@ if(isset($_POST['submit'])){
                                 <form action="" method="POST" enctype="multipart/form-data">
                                     <div class="dc_box_container">
                                         <h6>
-                                            <span class="icon">
-                                                <i class="fa fa-user"></i>
-                                            </span>
-                                            <span class="text">Appointment Now</span>
+                                            <span class="text">Appointment</span>
                                         </h6> 
                                     </div>
                             </div>
@@ -123,7 +120,7 @@ if(isset($_POST['submit'])){
                                 </div>
                                 <br />   
 
-                                <input name="submit" type="submit" class="base_btn" value="Appointment Now" />
+                                <input name="submit" type="submit" class="base_btn" value="Save" />
                             </div>
                             </form>
                         </div>

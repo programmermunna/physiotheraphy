@@ -37,11 +37,7 @@ if(isset($_POST['add_service'])){
                             <div class="dc_box_header">
                                 <div class="dc_box_container">
                                     <h6>
-
-                                        <span class="icon">
-                                            <i class="fa fa-user"></i>
-                                        </span>
-                                        <span class="text">All service </span>
+                                        <span class="text">All Appointments </span>
                                     </h6>
                                 </div>
                             </div>
@@ -83,7 +79,7 @@ if(isset($_POST['add_service'])){
                                             while($row = mysqli_fetch_assoc($query)){ $i++;?>
                                             <tr>
                                                 <td><?php echo $i;?></td>
-                                                <td><img style="width:50px;height:50px;border-radius:50px;" src="../upload/<?php echo $row['file'];?>"></td>
+                                                <td><img style="width:60px;height:40px;" src="../upload/<?php echo $row['file'];?>"></td>
                                                 <td><?php echo $row['name'];?></td>
                                                 <td><?php echo $row['phone'];?></td>
                                                 <td><?php echo $row['email'];?></td>

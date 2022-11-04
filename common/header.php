@@ -70,7 +70,8 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website WHERE id
       </div>
 
       <ul id="menu" class="header_right">
-        <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="index.php?page=tarms-condition.php" class="rubik">Trams&Condition</a></li>
+        <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="terms&condition.php" class="rubik">About</a></li>
+        <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="terms&condition.php" class="rubik">Trams&Condition</a></li>
         <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="contact.php" class="rubik">Contract</a></li>
         <li class="signup_btn show_fsp"><a style="font-size:17px;font-weight:400;" href="appointment.php" class="rubik">Appointment</a></li>
       </ul>

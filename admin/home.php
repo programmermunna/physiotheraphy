@@ -8,11 +8,10 @@ if($id<1){
   header('location:index.php');
 }
 $appointment = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM appointment"));
-$visitors = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM visitors"));
-$visitors = $visitors['visitor'];
-$service = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM service WHERE name !='index'"));
-$service_publish = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM service WHERE status='Publish' AND name !='index'"));
-$service_draft = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM service WHERE status='Draft' AND name !='index'"));
+$visitors = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM visitors"));
+$service = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM service"));
+$service_publish = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM service WHERE status='Publish'"));
+$service_draft = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM service WHERE status='Draft'"));
 ?>
   <main class="content_wrapper">
     <!--===== main page content =====-->
@@ -78,7 +77,7 @@ $service_draft = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM service WHERE
                         </span>
                         <span class="value"><?php echo $visitors;?></span>
                       </div>
-                      <div class="title">Total visitors</div>
+                      <div class="title">Total Visitors</div>
                     </div>                    
 
                   </div>
