@@ -15,18 +15,9 @@ if(isset($_POST['submit'])){
   $address = $_POST['address'];
   $message = $_POST['message'];
   $date = $_POST['date'];
-  $time = time();  
-
-  $file_name = $_FILES['file']['name'];
-  $file_tmp = $_FILES['file']['tmp_name'];
-  move_uploaded_file($file_tmp,"upload/$file_name");
-
-  if(empty($file_name)){
-    $sql = "UPDATE appointment SET `name` = '$name', `phone` = '$phone', `email` = '$email', `address` = '$address', `message` = '$message', `date` = '$date', `time` = '$time' WHERE id = $id";
-  }else{
-    $sql = "UPDATE appointment SET `name` = '$name', `phone` = '$phone', `email` = '$email', `address` = '$address', `message` = '$message', `date` = '$date', `time` = '$time', `file` = '$file_name' WHERE id = $id";
-  }
+  $time = time();
   
+  $sql = "UPDATE appointment SET `name` = '$name', `phone` = '$phone', `email` = '$email', `address` = '$address', `message` = '$message', `date` = '$date', `time` = '$time' WHERE id = $id";  
   $query = mysqli_query($conn,$sql);
   if($query){
     $msg = "Successfully Updated";
@@ -115,19 +106,20 @@ if(isset($_POST['submit'])){
                                 <div>
                                     <label for="twitter_p"> Photo</label>
                                     <div class="base_input_icon">
-                                        <input type="file" name="file" style="margin:0;padding:0;padding-top:10px;padding-left:10px;">
+                                        <a href="../upload/<?php echo $data['file']?>" target="_blank"><img style="width:300px;height:300px" src="../upload/<?php echo $data['file']?>" alt=""></a>
                                     </div>
                                 </div>
-                                <br />   
+                                <br />
 
                                 <input name="submit" type="submit" class="base_btn" value="Save" />
                             </div>
-                            </form>
+                            </form>                     
+                            <?php include("appointment-mail.php");?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+</main>
         <?php include('common/footer.php');?>
         <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>

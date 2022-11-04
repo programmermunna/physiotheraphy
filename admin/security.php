@@ -43,10 +43,6 @@ if(isset($_POST['change_pass'])){
                   <div class="dc_box_header">
                     <div class="dc_box_container">
                       <h6>
-                        
-                        <span class="icon">
-                          <i class="fa fa-user"></i>
-                        </span>
                         <span class="text"> Change Password </span>
                       </h6>
                     </div>

@@ -11,20 +11,10 @@ if(isset($_POST['add_service'])){
     $name =$_POST['name'];
     $title =$_POST['title'];
     $content =$_POST['content'];
-    $status =$_POST['status'];
-    
+    $status =$_POST['status'];    
     $url = strtolower($name).".php";
 
-    $file_name = $_FILES['file']['name'];
-    $file_tmp = $_FILES['file']['tmp_name'];
-    move_uploaded_file($file_tmp,"../upload/$file_name");
-
-    if(!empty($_FILES['file']['name'])){
-        $row = mysqli_query($conn,"UPDATE service SET name='$name',title='$title',file='$file_name',url='$url',status='$status',content='$content' WHERE id=$id");
-    }else{
-        $row = mysqli_query($conn,"UPDATE service SET name='$name',title='$title',url='$url',status='$status',content='$content' WHERE id=$id");
-    }
-
+    $row = mysqli_query($conn,"UPDATE service SET name='$name',title='$title',url='$url',status='$status',content='$content' WHERE id=$id");
     if($row){
     $msg = "Successfully Create a New service";
     header("location:service-edit.php?id=$id&&msg=$msg");
@@ -91,7 +81,18 @@ if(isset($_POST['add_service'])){
                                 <br>
                                 <br>
                                 <?php
-                                if(isset($_POST['remove_image'])){
+                                if(isset($_POST['add_image'])){
+                                    $file_name = $_FILES['file']['name'];
+                                    $file_tmp = $_FILES['file']['tmp_name'];
+                                    move_uploaded_file($file_tmp,"../upload/$file_name");
+                                    $file_insert = mysqli_query($conn,"UPDATE service SET file='$file_name' WHERE id=$id");
+                                    if($file_insert){
+                                        $msg = "Features Image Uploaded Successfully";
+                                        header("location:service-edit.php?id=$id&&msg=$msg");
+                                    }
+
+
+                                }elseif(isset($_POST['remove_image'])){
                                     $remove = mysqli_query($conn,"UPDATE service SET file='' WHERE id=$id");
                                     if($remove){
                                         $msg = "Features Image Removed Successfully";
@@ -99,11 +100,15 @@ if(isset($_POST['add_service'])){
                                     }
                                 }
                                 ?>
-                                <form  action="" method="POST">
+                                <form action="" method="POST" enctype="multipart/form-data">
                                     <div><img style="width:50%" src="../upload/<?php echo $row['file']?>"></div>                                    
                                     <br>
+                                    <div class="input_area">
+                                        <label for="current_p">Features Image</label>
+                                        <input style="padding-top:10px;" name="file" type="file" class="base_input" />
+                                    </div>
                                     <br>
-                                    <label for="current_p">Remove Features Image</label>
+                                    <input name="add_image" type="submit" class="base_btn" value="Add Image" />
                                     <input name="remove_image" type="submit" class="base_btn" value="Remove" />
                                 </form>
                                 </div>

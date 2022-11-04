@@ -389,6 +389,7 @@ label {
   justify-content: flex-end;
   align-items: center;
   width: 100%;
+  margin-bottom: 0;
 }
 .header .container .header_right li {
   height: 100%;
@@ -539,6 +540,7 @@ label {
 
 footer.main_footer {
   margin-top: auto;
+  background: rgb(225 238 249);
 }
 footer.main_footer .footer_container {
   max-width: 1400px;
@@ -548,6 +550,7 @@ footer.main_footer .footer_container {
   align-items: center;
   justify-items: space-between;
   margin-top: auto;
+  background: rgb(225 238 249);
 }
 @media only screen and (max-width: 1680px) {
   footer.main_footer .footer_container {
@@ -1627,7 +1630,7 @@ footer.main_footer .footer_container .footer_right {
   font-size: 12px;
   text-transform: uppercase;
   padding: 12px 10px;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 .dashboard_layout .dashboard_sidebar .dashboard_sidebar_item ul li a:hover {
   background: #0072ffc9;

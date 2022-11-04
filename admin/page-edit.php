@@ -9,18 +9,9 @@ $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM page WHERE id=$id"))
 
 if(isset($_POST['add_page'])){
     $title =$_POST['title'];
-    $content =$_POST['content'];
+    $content =$_POST['content']; 
 
-    $file_name = $_FILES['file']['name'];
-    $file_tmp = $_FILES['file']['tmp_name'];
-    move_uploaded_file($file_tmp,"../upload/$file_name");
-
-    if(!empty($_FILES['file']['name'])){
-        $row = mysqli_query($conn,"UPDATE page SET title='$title',img='$file_name',content='$content' WHERE id=$id");
-    }else{
-        $row = mysqli_query($conn,"UPDATE page SET title='$title',content='$content' WHERE id=$id");
-    }
-
+    $row = mysqli_query($conn,"UPDATE page SET title='$title',content='$content' WHERE id=$id");
     if($row){
     $msg = "Successfully Create a New page";
     header("location:page-edit.php?id=$id&&msg=$msg");
@@ -47,12 +38,7 @@ if(isset($_POST['add_page'])){
                             </div>
                             
                             <div class="dc_box_container">
-                                    <form action="" method="POST" enctype="multipart/form-data">
-                                    <div class="input_area">
-                                        <label for="current_p">Feather Image</label>
-                                        <input style="padding-top:10px;" name="file" type="file" class="base_input" />
-                                    </div>
-                                    <br />
+                                    <form action="" method="POST" enctype="multipart/form-data">                                    
                                     <div class="input_area">
                                         <label for="current_p">Page Name</label>
                                         <input disabled name="name" type="text" class="base_input" value="<?php echo $row['name']?>" />
@@ -74,7 +60,18 @@ if(isset($_POST['add_page'])){
                                 </form>
                                 <br>
                                 <?php
-                                if(isset($_POST['remove_image'])){
+                                if(isset($_POST['add_image'])){
+                                    $file_name = $_FILES['file']['name'];
+                                    $file_tmp = $_FILES['file']['tmp_name'];
+                                    move_uploaded_file($file_tmp,"../upload/$file_name");
+                                    $file_insert = mysqli_query($conn,"UPDATE page SET img='$file_name' WHERE id=$id");
+                                    if($file_insert){
+                                        $msg = "Features Image Uploaded Successfully";
+                                        header("location:page-edit.php?id=$id&&msg=$msg");
+                                    }
+
+
+                                }elseif(isset($_POST['remove_image'])){
                                     $remove = mysqli_query($conn,"UPDATE page SET img='' WHERE id=$id");
                                     if($remove){
                                         $msg = "Features Image Removed Successfully";
@@ -82,11 +79,15 @@ if(isset($_POST['add_page'])){
                                     }
                                 }
                                 ?>
-                                <form action="" method="POST">
+                                <form action="" method="POST" enctype="multipart/form-data">
                                     <div><img style="width:50%" src="../upload/<?php echo $row['img']?>"></div>                                    
                                     <br>
+                                    <div class="input_area">
+                                        <label for="current_p">Features Image</label>
+                                        <input style="padding-top:10px;" name="file" type="file" class="base_input" />
+                                    </div>
                                     <br>
-                                    <label for="current_p">Remove Features Image</label>
+                                    <input name="add_image" type="submit" class="base_btn" value="Add Image" />
                                     <input name="remove_image" type="submit" class="base_btn" value="Remove" />
                                 </form>
                                 </div>

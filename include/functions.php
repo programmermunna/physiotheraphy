@@ -86,10 +86,4 @@ function sendVarifyCode($smtp_host, $smtp_username, $smtp_password, $smtp_port, 
         munna.innerHTML = ''
     }, munna?.dataset?.time || 2000)
 }})
-
-    // -------mobile navigation---------
-    $(document).ready(function(){
-        $('#menu').slicknav();
-    })
-
     </script>

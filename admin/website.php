@@ -140,7 +140,7 @@ if(isset($_POST['save'])){
                                 <div class="flex_inputs">
                                     <div class="input_area">
                                         <labelfor="smtp_user_name">Chat Box</labelfor=>
-                                        <input name="chatbox" type="text" class="base_input" />
+                                        <textarea name="chatbox" class="textarea"><?php echo $website['chatbox'];?></textarea>
                                     </div>
                                 </div>
                                 <br />

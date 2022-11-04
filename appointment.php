@@ -1,10 +1,5 @@
 <?php include('common/header.php');?>
 <?php 
-if($id<1){
-    $msg = "Please Login First!";
-    header("location:login.php?msg=$msg");
-}
-
 if(isset($_POST['save'])){
   $name = $_POST['name'];
   $phone = $_POST['phone'];
@@ -117,6 +112,6 @@ if(isset($_POST['save'])){
                 </div>
             </div>
         </div>
-
+        </main> 
         <?php include('common/footer.php');?>
         <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>

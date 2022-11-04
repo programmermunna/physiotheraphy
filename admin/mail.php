@@ -40,9 +40,6 @@ if(isset($_POST['save'])){
                                 <form action="" method="POST" enctype="multipart/form-data">
                                     <div class="dc_box_container">
                                         <h6>
-                                            <span class="icon">
-                                                <i class="fa fa-user"></i>
-                                            </span>
                                             <span class="text"> Mail setting </span>
                                         </h6>
 

@@ -1,4 +1,4 @@
-<?php include('common/header.php');?>
+<?php //include('common/header.php');?>
 <?php
 if(isset($_GET['id'])){
     $id = $_GET['id'];
@@ -37,11 +37,11 @@ header("location:pending-status.php?msg=$msg");
 ?>
 <main class="content_wrapper">
     <!--===== main page content =====-->
-    <div class="content">
+    <div class="content" style="padding-top:0;">
         <div class="container">
             <div class="page_content">
                 <div class="dashboard_layout">
-                    <?php include('common/sidebar.php');?>
+                    <?php //include('common/sidebar.php');?>
                     <div class="dashboard_content">
                         <div class="dc_box">
                             <div class="dc_box_header">
@@ -49,9 +49,6 @@ header("location:pending-status.php?msg=$msg");
                                 <form action="" method="POST" enctype="multipart/form-data">
                                     <div class="dc_box_container">
                                         <h6>
-                                            <span class="icon">
-                                                <i class="fa fa-user"></i>
-                                            </span>
                                             <span class="text"> Send Mail </span>
                                         </h6>
                                     </div>
@@ -122,6 +119,3 @@ header("location:pending-status.php?msg=$msg");
                 message_area.value=select_mess.value;
             });0
         </script>
-
-        <?php include('common/footer.php');?>
-        <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>
