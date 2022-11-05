@@ -1,6 +1,6 @@
 <div class="dashboard_sidebar">
     <div class="dashboard_sidebar_item">
-        <ul class="ds_ul" style="height:300px;">
+        <ul class="ds_ul" style="padding:20px 0;">
             <?php
             $service = mysqli_query($conn, "SELECT * FROM service WHERE status='Publish'");
             while ($row = mysqli_fetch_assoc($service)) { ?>

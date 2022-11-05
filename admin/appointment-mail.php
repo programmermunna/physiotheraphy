@@ -6,8 +6,7 @@ if(isset($_GET['id'])){
 
 $ready_mail = mysqli_query($conn,"SELECT * FROM ready_mail");
 
-if(isset($_POST['submit'])){    
-
+if(isset($_POST['send'])){ 
 $sub = $_POST['subject'];
 $message = $_POST['message'];
 $insert = mysqli_query($conn,"INSERT INTO ready_mail(subject,message) VALUE('$sub','$message')");
@@ -26,11 +25,11 @@ $site_name = $mail['site_replay_email'];
 
 $address = $email;
 $subject = $sub;
-$body = $message;
+$body = "<h3>".$message."</h3>";
 $send = sendVarifyCode($smtp_host,$smtp_username,$smtp_password,$smtp_port,$smtp_secure,$site_email,$site_name,$address,$body,$subject);
 
 $msg = 'Your Mail was sent successfully.';
-header("location:pending-status.php?msg=$msg");
+header("location:appointment-edit.php?msg=$msg");
 
 }
 
@@ -94,7 +93,7 @@ header("location:pending-status.php?msg=$msg");
                                     <textarea name="message" class="textarea message_area"></textarea>
                                 </div>                                
                                 <br><br>
-                                <input name="submit" type="submit" class="base_btn"
+                                <input name="send" type="submit" class="base_btn"
                                     value="Send" />
                             </div>
                             </form>

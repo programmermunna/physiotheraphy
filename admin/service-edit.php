@@ -36,17 +36,12 @@ if(isset($_POST['add_service'])){
                                 <div class="dc_box_container">
                                     <h6>
                                         <span class="text">Edit Service </span>
-                                    </h6>
+                                    </h6>   
                                 </div>
                             </div>
                             
                             <form action="" method="POST" enctype="multipart/form-data">
                                 <div class="dc_box_container">
-                                    <div class="input_area">
-                                        <label for="current_p">Thumbnail</label>
-                                        <input style="padding-top:10px;" name="file" type="file" class="base_input" />
-                                    </div>
-                                    <br />
                                     <div class="input_area">
                                         <label for="current_p">service Name</label>
                                         <input required name="name" type="text" class="base_input" value="<?php echo $row['name']?>" />

@@ -16,6 +16,8 @@ if(isset($_POST['submit'])){
   $message = $_POST['message'];
   $date = $_POST['date'];
   $time = time();
+
+
   
   $sql = "UPDATE appointment SET `name` = '$name', `phone` = '$phone', `email` = '$email', `address` = '$address', `message` = '$message', `date` = '$date', `time` = '$time' WHERE id = $id";  
   $query = mysqli_query($conn,$sql);
@@ -116,7 +118,7 @@ if(isset($_POST['submit'])){
                             </form>                     
                             <?php include("appointment-mail.php");?>
                         </div>
-                    </div>g
+                    </div>
                 </div>
             </div>
         </div>

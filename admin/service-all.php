@@ -80,7 +80,7 @@ if(isset($_POST['add_service'])){
                                                 if(empty($row['file'])){ ?>
                                                 <td style="padding-left:40px;padding-top:15px;">NO IMAGES</td>
                                              <?php }else{ ?>
-                                                <td><img style="width:150px;height:50px;" src="../upload/<?php echo $row['file'];?>"></td>
+                                                <td><img style="width:100px;height:50px;" src="../upload/<?php echo $row['file'];?>"></td>
                                               <?php  }?>
                                                 <td><?php echo $row['title'];?></td>
                                                 <td>
