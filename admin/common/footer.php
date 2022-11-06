@@ -1,4 +1,4 @@
-<footer class="main_footer">
+    <footer class="main_footer">
         <div class="footer_container">
           <div class="footer_left">
           <?php echo $website['f_text'];?>
