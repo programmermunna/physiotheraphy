@@ -15,10 +15,10 @@ if(isset($_POST['submit'])){
   if($send){
     $msg = "Send Message Successfully";
     header("location:contact.php?msg=$msg");
-  }else{
+    }else{
     $msg = "Something is wrong!";
     header("location:contact.php?msg=$msg");
-}
+    }
   
   
 }

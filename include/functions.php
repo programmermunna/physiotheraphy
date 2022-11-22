@@ -74,7 +74,7 @@ function sendVarifyCode($smtp_host, $smtp_username, $smtp_password, $smtp_port, 
     ?>
 
     <script>
-            // ---------popup Notification---------
+    // ---------popup Notification---------
     window.addEventListener('DOMContentLoaded', () => {
     const munna = document.getElementById("munna");
     if (munna) {
